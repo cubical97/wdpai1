@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: transparent linear-gradient(180deg, #D2E9FF 0%, #0090FF 100%) 0% 0% no-repeat padding-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    height: 10%;
+    text-align: center;
+    margin: 3em;
+}
+
+img {
+    width: 90%;
+}
+
+.label1 {
+    height: 5%;
+    text-align: center;
+    font: normal normal normal 1em/1em Arial;
+    color: #FFFFFF;
+}
+
+.regiter-container {
+    height: 50%;
+}
+
+form {
+    width: 14vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.label2 {
+    width: 10em;
+    text-align: left;
+    font: normal normal normal 1em/1em Arial;
+    font-size: 80%;
+    color: #FFFFFF;
+}
+
+.form2 {
+    width: 10em;
+    height: 1em;
+    text-align: left;
+    background: #FFFFFFEB 0% 0% no-repeat padding-box;
+    border: 1px solid #BCE0FD;
+    margin-top: 0.2em;
+    margin-bottom: 0.8em;
+}
+
+button {
+    width: 80%;
+    border: none;
+    color: white;
+    margin: 1em;
+    line-height: 2.5em;
+
+    background: #7F7F7F 0% 0% no-repeat padding-box;
+    border-radius: 1px;
+}
+
+input {
+    background-color: transparent;
+    text-align: left;
+    border: none;
+    width: 8em;
+    height: 1em;
+    font: normal normal normal 70%/70% Arial;
+}
+
+@media only screen and (max-device-width: 420px) {
+    .container {
+        flex-direction: column;
+    }
+
+    * {
+        font-size:36px;
+    }
+
+    .login-container, .logo {
+        width: 100%;
+    }
+
+    form {
+        margin: auto;
+    }
+
+    img {
+        height: 7em;
+        margin: 2em;
+    }
+}
