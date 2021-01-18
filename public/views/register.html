@@ -14,11 +14,18 @@
                 <input class="register" name="name" type="text" placeholder="name">
                 <input class="register" name="surname" type="text" placeholder="surname">
                 <input class="register" name="email" type="text" placeholder="email@mail.com">
-                <input class="register" name="password1" type="text" placeholder="password">
-                <input class="register" name="password2" type="text" placeholder="password">
+                <input class="register" name="password1" type="password" placeholder="password">
+                <input class="register" name="password2" type="password" placeholder="password">
             </div>
             <div class="regiter-input-container">
-                <input class="descr" name="gender" type="checkbox">
+
+                <div class="label">Choose a gender:</div>
+                <select class="selectgen" name="gender" id="gender">
+                    <option value="none">none</option>
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                </select>
+                <div class="label">Your description:</div>
                 <input class="descr" name="description" type="text" placeholder="Write about you...">
             </div>
 

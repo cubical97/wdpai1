@@ -42,7 +42,7 @@ form.login {
 }
 
 .label {
-    height: 5%;
+    height: 3em;
     text-align: center;
     font: normal normal normal 1em/1em Arial;
     color: #FFFFFF;
@@ -93,6 +93,10 @@ input.register, input.descr{
     width: 30em;
     background: #FFFFFFEB 0% 0% no-repeat padding-box;
     box-shadow: 0px 5px 6px #00000029;
+}
+
+.selectgen{
+    width: 15em;
 }
 
 input.descr{
