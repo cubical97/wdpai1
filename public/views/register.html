@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="public/css/registerstyle.css">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <title>LOGIN PAGE</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container-register">
         <div class="logo">
             <img src="public/img/logo.svg">
         </div>
-        <div class="label1">Create an Account</div>
+        <div class="label">Create an Account</div>
         <div class="regiter-container">
-            <form>
-            <div class="label2">Full Name*</div>
-            <div class="form2">
-                <input name="fullname" type="text" placeholder="Name Surrname">
+            <div class="regiter-input-container">
+                <input class="register" name="name" type="text" placeholder="name">
+                <input class="register" name="surname" type="text" placeholder="surname">
+                <input class="register" name="email" type="text" placeholder="email@mail.com">
+                <input class="register" name="password1" type="text" placeholder="password">
+                <input class="register" name="password2" type="text" placeholder="password">
             </div>
-            <div class="label2">Email *</div>
-            <div class="form2">
-                <input name="email" type="text" placeholder="email@email.com">
+            <div class="regiter-input-container">
+                <input class="descr" name="gender" type="checkbox">
+                <input class="descr" name="description" type="text" placeholder="Write about you...">
             </div>
-            <div class="label2">Password *</div>
-            <div class="form2">
-                <input name="password" type="password" placeholder="password">
-            </div>
-                <button>REGISTER</button>
-            </form>
+
         </div>
+        <button class="register">REGISTER</button>
     </div>
 </body>
