@@ -9,8 +9,8 @@ class DefaultController extends AppController {
     public function register() {
         $this->render('register');
     }
-    public function search() {
-        $this->render('search');
+    public function home() {
+        $this->render('home');
     }
     public function activities() {
         $this->render('activities');
