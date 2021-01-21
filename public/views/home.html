@@ -1,30 +1,46 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/home-style.css">
     <script src="https://kit.fontawesome.com/e9889f5f85.js" crossorigin="anonymous"></script>
-    <title>PROJECTS</title>
+    <title>HOME PAGE</title>
 </head>
 <body>
     <div class="base-container">
         <nav>
-
+            <div class="logo">
+                <img src="public/img/logo.svg">
+            </div>
+            <label class="username">USUERNAME</label>
+            <button class="menubutton"><i class="fas fa-search"></i>HOME</button>
+            <button class="menubutton"><i class="fas fa-user-edit"></i>MY ACTIVITIES</button>
+            <button class="menubutton"><i class="fas fa-plus"></i>ADD ACTIVITIES</button>
+            <button class="menubutton"><i class="fas fa-user-friends"></i>FRIENDS</button>
+            <button class="menubutton"><i class="fas fa-cog"></i>OPTIONS</button>
+            <button class="menubutton"><i class="fas fa-sign-out-alt"></i>LOGOUT</button>
         </nav>
         <main>
             <section class="activities_list">
-                <div>project 1</div>
-                <div>project 2</div>
-                <div>project 3</div>
+                <button class="activity-block">project 1</button>
+                <button class="activity-block">project 2</button>
+                <button class="activity-block">project 3</button>
             </section>
             <headder>
-                 <div class="search-bar">
-                     <form>
-                         <input placeholder="search action">
-                     </form>
-                 </div>
-                 <div class="add-activity">
+                <div class="search-bar">
+                    <input placeholder="find activity">
+                </div>
+                <select class="action-type" name="type" id="a-type">
+                    <option value="all">all</option>
+                    <option value="cycling">cycling</option>
+                    <option value="football">football</option>
+                    <option value="yoga">yoga</option>
+                </select>
+                <button class="find">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="add-activity">
                     <i class="fas fa-plus"></i>
                     create activity
-                 </div>
+                </button>
             </headder>
             <div class="main-action">
                 activities
