@@ -103,6 +103,10 @@ input.descr{
     height: 15em;
 }
 
+.fa, .fas{
+    width: 1em;
+}
+
 @media only screen and (max-device-width: 420px) {
     .container {
         flex-direction: column;
