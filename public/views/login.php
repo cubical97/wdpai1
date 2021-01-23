@@ -23,6 +23,8 @@
                 <input name="email" type="text" placeholder="email@email.com">
                 <input name="password" type="password" placeholder="password">
                 <button type="submit" class="login">LOGIN</button>
+            </form>
+            <form action="register" method="GET">
                 <button class="register">REGISTER</button>
             </form>
         </div>
