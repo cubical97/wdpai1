@@ -9,6 +9,10 @@ class SecurityController extends AppController
     {
         $user = new User('admin@adminemail.pl', 'admin', 'Johnny', 'Snow');
 
+        if(!$this->isPost()) {
+            return $this->render('login');
+        }
+
         $email = $_POST["email"];
         $password = $_POST["password"];
 
@@ -20,7 +24,9 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
-        return $this->render('home');
+        //return $this->render('home');
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/home");
     }
 }
 

@@ -9,7 +9,7 @@
             <img src="public/img/logo.svg">
         </div>
         <div class="login-container">
-            <form class="login" action="login" method="post">
+            <form class="login" action="login" method="POST">
 
                 <div class="message">
                     <?php if(isset($messages)) {
