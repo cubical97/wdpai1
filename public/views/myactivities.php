@@ -2,7 +2,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/homestyle.css">
     <script src="https://kit.fontawesome.com/e9889f5f85.js" crossorigin="anonymous"></script>
-    <title>OPTIONS PAGE</title>
+    <title>MY ACTIVITIES PAGE</title>
 </head>
 <body>
 <div class="base-container">

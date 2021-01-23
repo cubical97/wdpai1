@@ -12,8 +12,8 @@ class DefaultController extends AppController {
     public function home() {
         $this->render('home');
     }
-    public function activities() {
-        $this->render('activities');
+    public function myactivities() {
+        $this->render('myactivities');
     }
     public function activity_create() {
         $this->render('activity_create');

@@ -11,12 +11,24 @@
                 <img src="public/img/logo.svg">
             </div>
             <label class="username">USUERNAME</label>
-            <button class="menubutton"><i class="fas fa-search"></i>HOME</button>
-            <button class="menubutton"><i class="fas fa-user-edit"></i>MY ACTIVITIES</button>
-            <button class="menubutton"><i class="fas fa-plus"></i>ADD ACTIVITIES</button>
-            <button class="menubutton"><i class="fas fa-user-friends"></i>FRIENDS</button>
-            <button class="menubutton"><i class="fas fa-cog"></i>OPTIONS</button>
-            <button class="menubutton"><i class="fas fa-sign-out-alt"></i>LOGOUT</button>
+            <form action="home" method="GET">
+                <button class="menubutton"><i class="fas fa-search"></i>HOME</button>
+            </form>
+            <form action="myactivities" method="GET">
+                <button class="menubutton"><i class="fas fa-user-edit"></i>MY ACTIVITIES</button>
+            </form>
+            <form action="activity_create" method="GET">
+                <button class="menubutton"><i class="fas fa-plus"></i>ADD ACTIVITIES</button>
+            </form>
+            <form action="friends" method="GET">
+                <button class="menubutton"><i class="fas fa-user-friends"></i>FRIENDS</button>
+            </form>
+            <form action="options" method="GET">
+                <button class="menubutton"><i class="fas fa-cog"></i>OPTIONS</button>
+            </form>
+            <form action="login" method="GET">
+                <button class="menubutton"><i class="fas fa-sign-out-alt"></i>LOGOUT</button>
+            </form>
         </nav>
         <main>
             <section class="activities_list">
@@ -24,60 +36,62 @@
                 <button class="activity-block">project 2</button>
                 <button class="activity-block">project 3</button>
             </section>
-            <header>
-                <div class="search-bar">
-                    <input name="find" type="text" placeholder="find activity">
-                </div>
-                <select class="action-type" name="type" id="a-type">
-                    <option value="all">all</option>
-                    <option value="cycling">cycling</option>
-                    <option value="football">football</option>
-                    <option value="yoga">yoga</option>
-                </select>
-                <button class="find">
-                    <i class="fas fa-search"></i>
-                </button>
-                <button class="add-activity">
-                    <i class="fas fa-plus"></i>
-                    create activity
-                </button>
-            </header>
-            <section class="activities">
-                <div id="activ-1" class="activity">
-                    <div class="avtiv1">
+            <div class="content">
+                <header>
+                    <div class="search-bar">
+                        <input name="find" type="text" placeholder="find activity">
+                    </div>
+                    <select class="action-type" name="type" id="a-type">
+                        <option value="all">all</option>
+                        <option value="cycling">cycling</option>
+                        <option value="football">football</option>
+                        <option value="yoga">yoga</option>
+                    </select>
+                    <button class="find">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="add-activity">
                         <i class="fas fa-plus"></i>
-                        <h2>rower</h2>
-                        <h2>35 min</h2>
-                    </div>
-                    <div class="activ2">
-                        <p>przykładowy opis</p>
-                    </div>
-                    <div class="activ1">
-                        <div class="activ-time">
-                            <h2>21 wtorek</h2>
-                            <h2>11:00 - 12:00</h2>
+                        create activity
+                    </button>
+                </header>
+                <section class="activities">
+                    <div id="activ-1" class="activity">
+                        <div class="avtiv1">
+                            <i class="fas fa-plus"></i>
+                            <h2>rower</h2>
+                            <h2>35 min</h2>
                         </div>
-                        <h2>4 uczestników</h2>
-                    </div>
-                </div>
-                <div id="activ-2" class="activity">
-                    <div class="avtiv1">
-                        <i class="fas fa-plus"></i>
-                        <h2>rower</h2>
-                        <h2>35 min</h2>
-                    </div>
-                    <div class="activ2">
-                        <p>przykładowy opis</p>
-                    </div>
-                    <div class="activ1">
-                        <div class="activ-time">
-                            <h2>21 wtorek</h2>
-                            <h2>11:00 - 12:00</h2>
+                        <div class="activ2">
+                            <p>przykładowy opis</p>
                         </div>
-                        <h2>4 uczestników</h2>
+                        <div class="activ1">
+                            <div class="activ-time">
+                                <h2>21 wtorek</h2>
+                                <h2>11:00 - 12:00</h2>
+                            </div>
+                            <h2>4 uczestników</h2>
+                        </div>
                     </div>
-                </div>
-            </section>
+                    <div id="activ-2" class="activity">
+                        <div class="avtiv1">
+                            <i class="fas fa-plus"></i>
+                            <h2>rower</h2>
+                            <h2>35 min</h2>
+                        </div>
+                        <div class="activ2">
+                            <p>przykładowy opis</p>
+                        </div>
+                        <div class="activ1">
+                            <div class="activ-time">
+                                <h2>21 wtorek</h2>
+                                <h2>11:00 - 12:00</h2>
+                            </div>
+                            <h2>4 uczestników</h2>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </main>
     </div>
 </body>

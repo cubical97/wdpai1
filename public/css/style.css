@@ -107,6 +107,10 @@ input.descr{
     width: 1em;
 }
 
+.message{
+    color: #bf0000;
+}
+
 @media only screen and (max-device-width: 420px) {
     .container {
         flex-direction: column;
