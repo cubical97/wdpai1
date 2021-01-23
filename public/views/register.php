@@ -32,7 +32,7 @@
                     <textarea class="descr" name="description" cols="40" rows="10"></textarea>
                 </div>
             </div>
-            <button herf="#" class="register">REGISTER</button>
+            <button class="register">REGISTER</button>
         </form>
     </div>
 </body>

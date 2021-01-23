@@ -37,7 +37,51 @@
             <button class="activity-block">project 3</button>
         </section>
         <div class="content">
-            no content yet
+            <div class="content_section">
+                <div class="message">
+                    <?php if(isset($messages)) {
+                        foreach ($messages as $message) {
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+            <form action="options_update_info" method="POST">
+                <div class="content_section">
+                    <div>
+                        <label>name</label>
+                        <input class="create-activity" name="name" type="text" placeholder="Steve">
+                    </div>
+                    <div>
+                        <label>surname</label>
+                        <input class="create-activity" name="surname" type="text" placeholder="Hurdon">
+                    </div>
+                    <div>
+                        <label>description</label>
+                        <textarea class="create-activity" name="description" cols="40" rows="10" placeholder="I'm fine :p"></textarea>
+                    </div>
+                    <button class="menubutton"><i class="fas fa-wrench"></i>UPDATE</button>
+                </div>
+            </form>
+            <form action="options_update_password" method="POST">
+                <div class="content_section">
+                    <label>change password</label>
+                    <div>
+                        <label>old password</label>
+                        <input class="create-activity" name="password1" type="password" placeholder="...">
+                    </div>
+                    <div>
+                        <label>new password</label>
+                        <input class="create-activity" name="password2" type="password" placeholder="...">
+                    </div>
+                    <div>
+                        <label>new password</label>
+                        <input class="create-activity" name="password3" type="password" placeholder="...">
+                    </div>
+                    <button class="menubutton"><i class="fas fa-wrench"></i>CHANGE PASSWORD</button>
+                </div>
+            </form>
         </div>
     </main>
 </div>

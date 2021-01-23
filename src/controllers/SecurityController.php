@@ -50,6 +50,39 @@ class SecurityController extends AppController
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/home");
     }
+
+    public function options_update_info() {
+
+        if(!$this->isPost()) {
+            return $this->render('options');
+        }
+
+        $name = $_POST["name"];
+        $surname = $_POST["surname"];
+        $email = $_POST["email"];
+        $description = $_POST["description"];
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/options");
+    }
+
+    public function options_update_password() {
+
+        if(!$this->isPost()) {
+            return $this->render('options');
+        }
+
+        $password1 = $_POST["password1"];
+        $password2 = $_POST["password2"];
+        $password3 = $_POST["password3"];
+
+        if ($password2 !== $password3) {
+            return $this->render('options', ['messages' => ['Different passwords!']]);
+        }
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/options");
+    }
 }
 
 ?>

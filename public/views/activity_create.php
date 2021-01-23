@@ -37,7 +37,50 @@
             <button class="activity-block">project 3</button>
         </section>
         <div class="content">
-            no content yet
+            <form action="addactiv" method="POST">
+                <div class="content_section">
+                    <div>
+                    <label>type</label>
+                    <select class="create-activity" name="type" id="a-type">
+                        <option value="cycling">cycling</option>
+                        <option value="jogging">jogging</option>
+                        <option value="gym">gym</option>
+                        <option value="swimming">swimming</option>
+                        <option value="yoga">yoga</option>
+                    </select>
+                    </div>
+                    <div>
+                        <label>name</label>
+                        <input class="create-activity" name="name" type="text" placeholder="-name-">
+                    </div>
+                    <div>
+                        <label>start time</label>
+                        <input class="create-activity" name="time" type="text" placeholder="-time-">
+                    </div>
+                    <div>
+                        <label>end time</label>
+                        <input class="create-activity" name="endtime" type="text" placeholder="-end_time-">
+                    </div>
+                    <div>
+                        <label>date "12.05.2099"</label>
+                        <input class="create-activity" name="date" type="text" placeholder="-date-">
+                    </div>
+                    <div>
+                        <label>max members "8"</label>
+                        <input class="create-activity" name="maxmembers" type="text" placeholder="-max_members-">
+                    </div>
+                    <div>
+                        <label>location</label>
+                        <input class="create-activity" name="location" type="text" placeholder="-address-">
+                    </div>
+                    <div>
+                        <label>description</label>
+                        <textarea class="create-activity" name="description" cols="40" rows="10" placeholder="-description-"></textarea>
+                    </div>
+
+                    <button class="menubutton"><i class="fas fa-plus"></i>CREATE</button>
+                </div>
+            </form>
         </div>
     </main>
 </div>

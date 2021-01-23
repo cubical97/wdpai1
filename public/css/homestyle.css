@@ -132,3 +132,32 @@ h2 {
     padding-left: 0.5em;
     padding-right: 0.5em;
 }
+
+.content_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.content_section>div {
+    display: flex;
+    flex-direction: row;
+    margin: 1em;
+}
+.content_section>div>label {
+    width: 8em;
+}
+
+.content_section>button {
+    background-color: #0090FF;
+    color: #FFFFFF;
+    width: 15em;
+}
+.create-activity {
+    width: 50vw;
+}
+
+textarea {
+    resize: none;
+}

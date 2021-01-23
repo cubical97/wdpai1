@@ -44,16 +44,20 @@
                     <select class="action-type" name="type" id="a-type">
                         <option value="all">all</option>
                         <option value="cycling">cycling</option>
-                        <option value="football">football</option>
+                        <option value="jogging">jogging</option>
+                        <option value="gym">gym</option>
+                        <option value="swimming">swimming</option>
                         <option value="yoga">yoga</option>
                     </select>
                     <button class="find">
                         <i class="fas fa-search"></i>
                     </button>
-                    <button class="add-activity">
-                        <i class="fas fa-plus"></i>
-                        create activity
-                    </button>
+                    <form action="activity_create" method="GET">
+                        <button class="add-activity">
+                            <i class="fas fa-plus"></i>
+                            create activity
+                        </button>
+                    </form>
                 </header>
                 <section class="activities">
                     <div id="activ-1" class="activity">
