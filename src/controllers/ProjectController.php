@@ -6,6 +6,22 @@ require_once __DIR__.'/../models/Activity.php';
 
 class ProjectController extends AppController
 {
+
+    public function findactiv() {
+        if(!$this->isPost()) {
+            return $this->render('home');
+        }
+
+        $name = $_POST["name"];
+        $type = $_POST["type"];
+
+        //searh for activities in db
+        //prind activities on screen
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/home");
+    }
+
     public function addactiv()
     {
         if(!$this->isPost()) {

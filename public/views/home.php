@@ -20,9 +20,6 @@
             <form action="activity_create" method="GET">
                 <button class="menubutton"><i class="fas fa-plus"></i>ADD ACTIVITIES</button>
             </form>
-            <form action="friends" method="GET">
-                <button class="menubutton"><i class="fas fa-user-friends"></i>FRIENDS</button>
-            </form>
             <form action="options" method="GET">
                 <button class="menubutton"><i class="fas fa-cog"></i>OPTIONS</button>
             </form>
@@ -37,28 +34,24 @@
                 <button class="activity-block">project 3</button>
             </section>
             <div class="content">
-                <header>
-                    <div class="search-bar">
-                        <input name="find" type="text" placeholder="find activity">
-                    </div>
-                    <select class="action-type" name="type" id="a-type">
-                        <option value="all">all</option>
-                        <option value="cycling">cycling</option>
-                        <option value="jogging">jogging</option>
-                        <option value="gym">gym</option>
-                        <option value="swimming">swimming</option>
-                        <option value="yoga">yoga</option>
-                    </select>
-                    <button class="find">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <form action="activity_create" method="GET">
-                        <button class="add-activity">
-                            <i class="fas fa-plus"></i>
-                            create activity
+                <form action="findactiv" method="GET">
+                    <header>
+                        <div class="search-bar">
+                            <input name="find" type="text" placeholder="find activity">
+                        </div>
+                        <select class="action-type" name="type" id="a-type">
+                            <option value="all">all</option>
+                            <option value="cycling">cycling</option>
+                            <option value="jogging">jogging</option>
+                            <option value="gym">gym</option>
+                            <option value="swimming">swimming</option>
+                            <option value="yoga">yoga</option>
+                        </select>
+                        <button class="find">
+                            <i class="fas fa-search"></i>
                         </button>
-                    </form>
-                </header>
+                    </header>
+                </form>
                 <section class="activities">
                     <div id="activ-1" class="activity">
                         <div class="avtiv1">

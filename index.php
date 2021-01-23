@@ -12,11 +12,11 @@ Routing::post('register', 'SecurityController');
 Routing::post('options_update_info', 'SecurityController');
 Routing::post('options_update_password', 'SecurityController');
 Routing::post('addactiv', 'ProjectController');
+Routing::post('findactiv', 'ProjectController');
 
 Routing::get('home', 'DefaultController');
 Routing::get('myactivities', 'DefaultController');
 Routing::get('activity_create', 'DefaultController');
-Routing::get('friends', 'DefaultController');
 Routing::get('options', 'DefaultController');
 Routing::get('activity', 'DefaultController');
 
