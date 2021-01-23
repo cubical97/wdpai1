@@ -9,11 +9,21 @@
             <img src="public/img/logo.svg">
         </div>
         <div class="login-container">
-            <form class="login">
+            <form class="login" action="login" method="post">
+
+                <div class="message">
+                    <?php if(isset($messages)) {
+                        foreach ($messages as $message) {
+                        echo $message;
+                        }
+                    }
+                    ?>
+                </div>
+
                 <input name="email" type="text" placeholder="email@email.com">
                 <input name="password" type="password" placeholder="password">
-                <button herf="#" class="login">LOGIN</button>
-                <button herf="#" class="register">REGISTER</button>
+                <button type="submit" class="login">LOGIN</button>
+                <button class="register">REGISTER</button>
             </form>
         </div>
     </div>
