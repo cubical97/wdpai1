@@ -23,7 +23,7 @@
             <form action="options" method="GET">
                 <button class="menubutton"><i class="fas fa-cog"></i>OPTIONS</button>
             </form>
-            <form action="login" method="GET">
+            <form action="index" method="GET">
                 <button class="menubutton"><i class="fas fa-sign-out-alt"></i>LOGOUT</button>
             </form>
         </nav>

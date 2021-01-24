@@ -2,12 +2,13 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
+require_once __DIR__.'/../repository/UserRepository.php';
 
 class SecurityController extends AppController
 {
     public function login()
     {
-        $user = new User('admin@adminemail.pl', 'admin', 'Johnny', 'Snow', 'none');
+        $userRepository = new UserRepository();
 
         if(!$this->isPost()) {
             return $this->render('login');
@@ -17,13 +18,18 @@ class SecurityController extends AppController
         $password = $_POST["password"];
 
         //find user there
+        $user = $userRepository->getUser($email);
+
+        if(!$user) {
+            return $this->render('index', ['messages' => ['User with this email not exists!']]);
+        }
 
         if ($user->getEmail() !== $email) {
-            return $this->render('login', ['messages' => ['User with this email not exists!']]);
+            return $this->render('index', ['messages' => ['User with this email not exists!2']]);
         }
 
         if ($user->getPassword() !== $password) {
-            return $this->render('login', ['messages' => ['Wrong password!']]);
+            return $this->render('index', ['messages' => ['Wrong password!']]);
         }
 
         $url = "http://$_SERVER[HTTP_HOST]";
@@ -41,7 +47,6 @@ class SecurityController extends AppController
         $email = $_POST["email"];
         $password1 = $_POST["password1"];
         $password2 = $_POST["password2"];
-        $description = $_POST["description"];
 
         if (!(isset($name) && strlen($name) > 0))
         {
@@ -72,7 +77,7 @@ class SecurityController extends AppController
         //find if email is used
         //create user
 
-        $user = new User($email, $password1, $name, $surname, $description);
+        $user = new User($email, $password1, $name, $surname);
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/home");

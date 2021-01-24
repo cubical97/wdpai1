@@ -23,7 +23,7 @@
         <form action="options" method="GET">
             <button class="menubutton"><i class="fas fa-cog"></i>OPTIONS</button>
         </form>
-        <form action="login" method="GET">
+        <form action="index" method="GET">
             <button class="menubutton"><i class="fas fa-sign-out-alt"></i>LOGOUT</button>
         </form>
     </nav>
@@ -48,15 +48,11 @@
                 <div class="content_section">
                     <div>
                         <label>name</label>
-                        <input class="create-activity" name="name" type="text" placeholder="Steve">
+                        <input class="create-activity" name="name" type="text" placeholder="Name">
                     </div>
                     <div>
                         <label>surname</label>
-                        <input class="create-activity" name="surname" type="text" placeholder="Hurdon">
-                    </div>
-                    <div>
-                        <label>description</label>
-                        <textarea class="create-activity" name="description" cols="40" rows="10" placeholder="I'm fine :p"></textarea>
+                        <input class="create-activity" name="surname" type="text" placeholder="Surname">
                     </div>
                     <button class="menubutton"><i class="fas fa-wrench"></i>UPDATE</button>
                 </div>
@@ -65,15 +61,15 @@
                 <div class="content_section">
                     <div>
                         <label>old password</label>
-                        <input class="create-activity" name="password1" type="password" placeholder="...">
+                        <input class="create-activity" name="password1" type="password" placeholder="***">
                     </div>
                     <div>
                         <label>new password</label>
-                        <input class="create-activity" name="password2" type="password" placeholder="...">
+                        <input class="create-activity" name="password2" type="password" placeholder="***">
                     </div>
                     <div>
                         <label>new password</label>
-                        <input class="create-activity" name="password3" type="password" placeholder="...">
+                        <input class="create-activity" name="password3" type="password" placeholder="***">
                     </div>
                     <button class="menubutton"><i class="fas fa-wrench"></i>CHANGE PASSWORD</button>
                 </div>

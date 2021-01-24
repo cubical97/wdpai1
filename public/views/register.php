@@ -27,10 +27,6 @@
                     <input class="register" name="password1" type="password" placeholder="password">
                     <input class="register" name="password2" type="password" placeholder="password">
                 </div>
-                <div class="regiter-input-container">
-                    <div class="label">Your description:</div>
-                    <textarea class="descr" name="description" cols="40" rows="10"></textarea>
-                </div>
             </div>
             <button class="register">REGISTER</button>
         </form>
