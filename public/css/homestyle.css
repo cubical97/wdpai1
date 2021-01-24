@@ -144,9 +144,22 @@ h2 {
     display: flex;
     flex-direction: row;
     margin: 1em;
+    width: 55vw;
 }
 .content_section>div>label {
     width: 8em;
+}
+
+.content_section>div>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.content_section>div>div>input {
+    width: 33%;
 }
 
 .content_section>button {

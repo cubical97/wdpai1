@@ -63,7 +63,6 @@
             </form>
             <form action="options_update_password" method="POST">
                 <div class="content_section">
-                    <label>change password</label>
                     <div>
                         <label>old password</label>
                         <input class="create-activity" name="password1" type="password" placeholder="...">
