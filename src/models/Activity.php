@@ -3,14 +3,6 @@
 class Activity
 {
 
-    private $typeName = ['cycling','jogging','gym','swimming'];
-    private $typeIcon = [
-        "fas fa-biking", //<i class="fas fa-biking"></i>
-        "fas fa-running",
-        "fas fa-dumbbell",
-        "fas fa-swimmer"
-    ];
-
     private $type;
     private $title;
     private $start_time;
@@ -63,16 +55,6 @@ class Activity
     public function setMaxParticipants(int $max_participants): void
     {
         $this->max_participants = $max_participants;
-    }
-
-    public function getTypeName(int $idndex): string
-    {
-        return $this->typeName[$idndex];
-    }
-
-    public function getTypeIcon(int $idndex): string
-    {
-        return $this->typeIcon[$idndex];
     }
 
     public function getType(): string

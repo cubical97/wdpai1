@@ -34,7 +34,7 @@
             <button class="activity-block">project 3</button>
         </section>
         <div class="content">
-            <form action="addActiv" method="POST">
+            <form action="add_activity" method="POST">
                 <div class="content_section">
                     <div class="message">
                         <?php if(isset($messages)) {
@@ -45,7 +45,7 @@
                         ?>
                     </div>
                     <div>
-                    <label>type</label>
+                        <label>type</label>
                         <select class="create-activity" name="type" id="a-type">
                             <option value="cycling">cycling</option>
                             <option value="jogging">jogging</option>

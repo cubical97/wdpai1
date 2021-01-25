@@ -6,7 +6,7 @@ require_once __DIR__.'/../models/Activity.php';
 class ActivityRepository extends Repository
 {
 
-    public function getACtivity(string $id): ?Activity{
+    public function getActivity(string $id): ?Activity{
         $stmt = $this->database->connect()->prepare('
         SELECT * FROM v_activities_info WHERE id = :id
         ');
@@ -34,12 +34,15 @@ class ActivityRepository extends Repository
 
     public function addActivity(Activity $activity) {
         $date = new DateTime();
+
+        die();
+
         $stmt = $this->database->connect()->prepare('
         INSERT INTO activities (title, created_at, id_assigned_by, start_time, end_time, type, description, max_participants)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ');
 
-        $assignedById = 1; //TODO
+        $assignedById = 1; //TODO get user id
 
         $stmt->execute([
             $activity->getTitle(),
@@ -57,7 +60,7 @@ class ActivityRepository extends Repository
         VALUES (?, ?, ?, ?)
         ');
 
-        $id_activity = 2; //TODO
+        $id_activity = $this->database->connect()->lastInsertId();
 
         $stmt->execute([
             $id_activity,
@@ -67,17 +70,13 @@ class ActivityRepository extends Repository
         ]);
 
         $stmt = $this->database->connect()->prepare('
-        INSERT INTO activities_address (id_activity, city, street, number)
-        VALUES (?, ?, ?, ?)
+        INSERT INTO users_activities (id_user, id_activity)
+        VALUES (?, ?)
         ');
 
-        $id_activity = 2; //TODO
-
         $stmt->execute([
-            $id_activity,
-            $activity->getCity(),
-            $activity->getStreet(),
-            $activity->getNumber()
+            $assignedById,
+            $id_activity
         ]);
     }
 }

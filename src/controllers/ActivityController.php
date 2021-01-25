@@ -15,7 +15,7 @@ class ActivityController extends AppController
         $this->activityRepository = new ActivityRepository();
     }
 
-    public function addActiv()
+    public function add_activity()
     {
         if(!$this->isPost()) {
             return $this->render('activity_create');
@@ -38,6 +38,8 @@ class ActivityController extends AppController
         $address1 = $_POST["location_nr"];
         $address2 = $_POST["location_street"];
         $address3 = $_POST["location_city"];
+
+        $type = ActionType::getTypeId($type);
 
         if(!preg_match('/^[a-zA-Z0-9\s\.\-_]+/D ', $title))
         {
@@ -94,7 +96,7 @@ class ActivityController extends AppController
         header("Location: {$url}/myactivities");
     }
 
-    public function findActiv() {
+    public function find_activity() {
         if(!$this->isPost()) {
             return $this->render('home');
         }
