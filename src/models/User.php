@@ -6,16 +6,15 @@ class User
     private $password;
     private $name;
     private $surname;
-    private $description;
     private $usertype;
 
-    public function __construct(string $email, string $password, string $name, string $surname)
+    public function __construct(string $email, string $password, string $name, string $surname, int $role)
     {
         $this->email = $email;
         $this->password = $password;
         $this->name = $name;
         $this->surname = $surname;
-        $this->usertype = 0;
+        $this->usertype = $role;
     }
 
     public function getEmail(): string
@@ -56,5 +55,15 @@ class User
     public function setSurname(string $surname): void
     {
         $this->surname = $surname;
+    }
+
+    public function getUsertype(): int
+    {
+        return $this->usertype;
+    }
+
+    public function setUsertype(int $usertype): void
+    {
+        $this->usertype = $usertype;
     }
 }

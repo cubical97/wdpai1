@@ -34,7 +34,7 @@
             <button class="activity-block">project 3</button>
         </section>
         <div class="content">
-            <form action="addactiv" method="POST">
+            <form action="addActiv" method="POST">
                 <div class="content_section">
                     <div class="message">
                         <?php if(isset($messages)) {

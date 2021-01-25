@@ -2,25 +2,77 @@
 
 class Activity
 {
+
+    private $typeName = ['cycling','jogging','gym','swimming'];
+    private $typeIcon = [
+        "fas fa-biking", //<i class="fas fa-biking"></i>
+        "fas fa-running",
+        "fas fa-dumbbell",
+        "fas fa-swimmer"
+    ];
+
     private $type;
-    private $name;
-    private $time;
-    private $endtime;
-    private $date;
-    private $maxmembers;
-    private $address;
+    private $title;
+    private $start_time;
+    private $end_time;
+    private $city;
+    private $street;
+    private $number;
+    private $max_participants;
     private $description;
 
-    public function __construct(string $type, string $name, string $time, string $endtime, string $date, int $maxmembers, string $address, string $description)
+    public function __construct(string $type, string $title, string $start_time, string $end_time, string $description, string $city,
+                                string $street, string $number, int $max_participants)
     {
         $this->type = $type;
-        $this->name = $name;
-        $this->time = $time;
-        $this->endtime = $endtime;
-        $this->date = $date;
-        $this->maxmembers = $maxmembers;
-        $this->address = $address;
+        $this->title = $title;
+        $this->start_time = $start_time;
+        $this->end_time = $end_time;
         $this->description = $description;
+        $this->city = $city;
+        $this->street = $street;
+        $this->number = $number;
+        $this->max_participants = $max_participants;
+    }
+
+    public function getStreet(): string
+    {
+        return $this->street;
+    }
+
+    public function setStreet(string $street): void
+    {
+        $this->street = $street;
+    }
+
+    public function getNumber(): string
+    {
+        return $this->number;
+    }
+
+    public function setNumber(string $number): void
+    {
+        $this->number = $number;
+    }
+
+    public function getMaxParticipants(): int
+    {
+        return $this->max_participants;
+    }
+
+    public function setMaxParticipants(int $max_participants): void
+    {
+        $this->max_participants = $max_participants;
+    }
+
+    public function getTypeName(int $idndex): string
+    {
+        return $this->typeName[$idndex];
+    }
+
+    public function getTypeIcon(int $idndex): string
+    {
+        return $this->typeIcon[$idndex];
     }
 
     public function getType(): string
@@ -33,64 +85,44 @@ class Activity
         $this->type = $type;
     }
 
-    public function getName(): string
+    public function getTitle(): string
     {
-        return $this->name;
+        return $this->title;
     }
 
-    public function setName(string $name): void
+    public function setTitle(string $title): void
     {
-        $this->name = $name;
+        $this->title = $title;
     }
 
-    public function getTime(): string
+    public function getStartTime(): string
     {
-        return $this->time;
+        return $this->start_time;
     }
 
-    public function setTime(string $time): void
+    public function setStartTime(string $start_time): void
     {
-        $this->time = $time;
+        $this->start_time = $start_time;
     }
 
     public function getEndtime(): string
     {
-        return $this->endtime;
+        return $this->end_time;
     }
 
-    public function setEndtime(string $endtime): void
+    public function setEndtime(string $end_time): void
     {
-        $this->endtime = $endtime;
+        $this->end_time = $end_time;
     }
 
-    public function getDate(): string
+    public function getCity(): string
     {
-        return $this->date;
+        return $this->city;
     }
 
-    public function setDate(string $date): void
+    public function setCity(string $city): void
     {
-        $this->date = $date;
-    }
-
-    public function getMaxmembers(): int
-    {
-        return $this->maxmembers;
-    }
-
-    public function setMaxmembers(int $maxmembers): void
-    {
-        $this->maxmembers = $maxmembers;
-    }
-
-    public function getAddress(): string
-    {
-        return $this->address;
-    }
-
-    public function setAddress(string $address): void
-    {
-        $this->address = $address;
+        $this->city = $city;
     }
 
     public function getDescription(): string
