@@ -7,11 +7,13 @@ require_once __DIR__.'/../repository/UserRepository.php';
 class DefaultController extends AppController {
 
     protected $userRepository;
+    private $activityRepository;
 
     public function __construct()
     {
         parent::__construct();
         $this->userRepository = new UserRepository();
+        $this->activityRepository = new ActivityRepository();
     }
 
     public function index() {
@@ -22,8 +24,10 @@ class DefaultController extends AppController {
     }
     public function home() {
         $user_name = $this->userRepository->getUserName();
-        $this->render('home', ['user_name' => $user_name]);
+        $activty_types = ActionType::getAllNames();
+        $this->render('home', ['user_name' => $user_name, 'activity_types' => $activty_types]);
     }
+
     public function myactivities() {
         $user_name = $this->userRepository->getUserName();
         $this->render('myactivities', ['user_name' => $user_name]);

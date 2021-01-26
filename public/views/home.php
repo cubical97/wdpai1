@@ -39,18 +39,17 @@
                 <button class="activity-block">project 3</button>
             </section>
             <div class="content">
-                <form action="findactiv" method="GET">
+                <form action="home_find" method="POST">
                     <header>
                         <div class="search-bar">
                             <input name="find" type="text" placeholder="find activity">
                         </div>
                         <select class="action-type" name="type" id="a-type">
-                            <option value="all">all</option>
-                            <option value="cycling">cycling</option>
-                            <option value="jogging">jogging</option>
-                            <option value="gym">gym</option>
-                            <option value="swimming">swimming</option>
-                            <option value="yoga">yoga</option>
+                            <?php
+                            if(isset($activity_types))
+                                foreach ($activity_types as $activity_type): ?>
+                                    <option value=<?= $activity_type; ?>><?= $activity_type; ?></option>
+                                <?php endforeach; ?>
                         </select>
                         <button class="find">
                             <i class="fas fa-search"></i>
@@ -58,23 +57,26 @@
                     </header>
                 </form>
                 <section class="activities">
+                    <?php
+                    if(isset($activities_find))
+                    foreach ($activities_find as $activity): ?>
                     <div id="activ-1" class="activity">
                         <div class="avtiv1">
-                            <i class="fas fa-plus"></i>
-                            <h2>rower</h2>
-                            <h2>35 min</h2>
+                            <i class="<?= $activity->getIcon() ?>"></i>
+                            <h2><?= $activity->getTitle(); ?></h2>
                         </div>
                         <div class="activ2">
                             <p>przykładowy opis</p>
                         </div>
                         <div class="activ1">
                             <div class="activ-time">
-                                <h2>21 wtorek</h2>
-                                <h2>11:00 - 12:00</h2>
+                                <h2><?= $activity->getStartTime(); ?></h2>
+                                <h2><?= $activity->getEndtime(); ?></h2>
                             </div>
                             <h2>4 uczestników</h2>
                         </div>
                     </div>
+                    <?php endforeach; ?>
                     <div id="activ-2" class="activity">
                         <div class="avtiv1">
                             <i class="fas fa-plus"></i>

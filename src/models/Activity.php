@@ -12,9 +12,10 @@ class Activity
     private $number;
     private $max_participants;
     private $description;
+    private $icon;
 
     public function __construct(string $type, string $title, string $start_time, string $end_time, string $description, string $city,
-                                string $street, string $number, int $max_participants)
+                                string $street, string $number, int $max_participants, string $icon=null)
     {
         $this->type = $type;
         $this->title = $title;
@@ -28,6 +29,17 @@ class Activity
         $this->street = $street;
         $this->number = $number;
         $this->max_participants = $max_participants;
+        $this->icon = $icon;
+    }
+
+    public function getIcon(): ?string
+    {
+        return $this->icon;
+    }
+
+    public function setIcon(?string $icon): void
+    {
+        $this->icon = $icon;
     }
 
     public function getStreet(): string

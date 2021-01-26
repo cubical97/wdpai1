@@ -102,14 +102,47 @@ class ActivityRepository extends Repository
 
     public function findActivities(string $name, string $type): ?array
     {
-        $stmt = $this->database->connect()->prepare('
-            SELECT * FROM v_activities_info WHERE name = :name AND type = :type');
+        $result = [];
 
-        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-        $stmt->bindParam(':type', $type, PDO::PARAM_STR);
-        $stmt->execute();
+//        if ($name == null) {
+//
+//            die('name set:'.$name);
+//
+//            $stmt = $this->database->connect()->prepare('
+//            SELECT * FROM v_activities_info WHERE title = :name AND type = :type AND end_time>NOW()');
+//
+//            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+//            $stmt->bindParam(':type', $type, PDO::PARAM_STR);
+//            $stmt->execute();
+//
+//            $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//        }
+//        else {
 
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $data;
+            $stmt = $this->database->connect()->prepare('
+            SELECT * FROM v_activities_info WHERE type = :type AND end_time>NOW()');
+
+            $stmt->bindParam(':type', $type, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        //}
+
+        foreach ($activities as $activity) {
+            $result[] = new Activity(
+                ActionType::getTypeName($activity['type']),
+                $activity['title'],
+                $activity['start_time'],
+                $activity['end_time'],
+                $activity['description'],
+                $activity['city'],
+                $activity['street'],
+                $activity['number'],
+                $activity['max_participants'],
+                ActionType::getTypeIcon($activity['type'])
+            );
+        }
+
+        return $result;
     }
 }

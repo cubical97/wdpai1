@@ -13,15 +13,15 @@ class ActionType
 
     public static function getTypeName(int $type): string
     {
-        return ActionType::$typeName[type];
+        return ActionType::$typeName[$type];
     }
     public static function getAllNames(): array
     {
         return ActionType::$typeName;
     }
-    public static function getTypeIcon(): string
+    public static function getTypeIcon(int $type): string
     {
-        return ActionType::$typeIcon[type];
+        return ActionType::$typeIcon[$type];
     }
     public static function getTypeId(string $getname): int
     {
