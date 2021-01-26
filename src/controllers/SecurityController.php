@@ -6,7 +6,7 @@ require_once __DIR__.'/../repository/UserRepository.php';
 
 class SecurityController extends AppController
 {
-    private $userRepository;
+    protected $userRepository;
 
     public function __construct()
     {
@@ -40,6 +40,15 @@ class SecurityController extends AppController
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/home");
+    }
+
+    public function logout()
+    {
+
+        $_SESSION['logon'] = 0;
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/");
     }
 
     public function register() {
@@ -118,7 +127,7 @@ class SecurityController extends AppController
         }
         $description = null;
 
-        //change user informations in db, if not null
+        // TODO change user informations in db #1
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/options");
@@ -141,7 +150,7 @@ class SecurityController extends AppController
             return $this->render('options', ['messages' => ['Weak passwords!']]);
         }
 
-        //change user informations in db
+        // TODO change user informations in db #2
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/options");

@@ -10,7 +10,12 @@
             <div class="logo">
                 <img src="public/img/logo.svg">
             </div>
-            <label class="username">USUERNAME</label>
+            <label class="username">
+                <?php
+                if(isset($user_name)) echo $user_name;
+                else echo 'Na'.$_SESSION['userid'];
+                ?>
+            </label>
             <form action="home" method="GET">
                 <button class="menubutton"><i class="fas fa-search"></i>HOME</button>
             </form>
@@ -23,7 +28,7 @@
             <form action="options" method="GET">
                 <button class="menubutton"><i class="fas fa-cog"></i>OPTIONS</button>
             </form>
-            <form action="index" method="GET">
+            <form action="logout" method="GET">
                 <button class="menubutton"><i class="fas fa-sign-out-alt"></i>LOGOUT</button>
             </form>
         </nav>

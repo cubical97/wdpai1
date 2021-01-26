@@ -32,17 +32,16 @@ class ActivityRepository extends Repository
         );
     }
 
-    public function addActivity(Activity $activity) {
+    public function addActivity(Activity $activity)
+    {
         $date = new DateTime();
 
-        die();
+        $assignedById = $_SESSION['userid'];
 
         $stmt = $this->database->connect()->prepare('
-        INSERT INTO activities (title, created_at, id_assigned_by, start_time, end_time, type, description, max_participants)
+        INSERT INTO activities (title, created_at, id_u, start_time, end_time, type, description, max_participants)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ');
-
-        $assignedById = 1; //TODO get user id
 
         $stmt->execute([
             $activity->getTitle(),
@@ -55,12 +54,12 @@ class ActivityRepository extends Repository
             $activity->getMaxParticipants()
         ]);
 
+        $id_activity = $this->getActivityId($activity);
+
         $stmt = $this->database->connect()->prepare('
-        INSERT INTO activities_address (id_activity, city, street, number)
+        INSERT INTO activities_address (id_a, city, street, number)
         VALUES (?, ?, ?, ?)
         ');
-
-        $id_activity = $this->database->connect()->lastInsertId();
 
         $stmt->execute([
             $id_activity,
@@ -70,7 +69,7 @@ class ActivityRepository extends Repository
         ]);
 
         $stmt = $this->database->connect()->prepare('
-        INSERT INTO users_activities (id_user, id_activity)
+        INSERT INTO users_activities (id_u, id_a)
         VALUES (?, ?)
         ');
 
@@ -78,5 +77,39 @@ class ActivityRepository extends Repository
             $assignedById,
             $id_activity
         ]);
+    }
+
+    public function getActivityId(Activity $activity): int
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.activities WHERE title = :title AND type = :type AND description = :description
+         AND max_participants = :max_participants');
+
+        $title = $activity->getTitle();
+        $type = $activity->getType();
+        $descr = $activity->getDescription();
+        $max_par = $activity->getMaxParticipants();
+
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindParam(':type', $type, PDO::PARAM_STR);
+        $stmt->bindParam(':description', $descr, PDO::PARAM_STR);
+        $stmt->bindParam(':max_participants', $max_par, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $data['id_a'];
+    }
+
+    public function findActivities(string $name, string $type): ?array
+    {
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM v_activities_info WHERE name = :name AND type = :type');
+
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':type', $type, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $data;
     }
 }

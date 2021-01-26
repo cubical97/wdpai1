@@ -3,28 +3,33 @@
 
 class ActionType
 {
+    private static $typeName = ['cycling','jogging','gym','swimming'];
+    private static $typeIcon = [
+        "fas fa-biking", //<i class="fas fa-biking"></i>
+        "fas fa-running",
+        "fas fa-dumbbell",
+        "fas fa-swimmer"
+    ];
+
     public static function getTypeName(int $type): string
     {
-        $typeName = ['cycling','jogging','gym','swimming'];
-        return $typeName[type];
+        return ActionType::$typeName[type];
+    }
+    public static function getAllNames(): array
+    {
+        return ActionType::$typeName;
     }
     public static function getTypeIcon(): string
     {
-        $typeIcon = [
-            "fas fa-biking", //<i class="fas fa-biking"></i>
-            "fas fa-running",
-            "fas fa-dumbbell",
-            "fas fa-swimmer"
-        ];
-        return $typeIcon[type];
+        return ActionType::$typeIcon[type];
     }
     public static function getTypeId(string $getname): int
     {
-        $typeName = ['cycling','jogging','gym','swimming'];
+        $typeName = ActionType::$typeName;
         $index=0;
-        foreach (typenames as $name){
+        foreach ($typeName as $name){
             if($name == $getname)
-                return index;
+                return $index;
             $index++;
         }
         return -1;

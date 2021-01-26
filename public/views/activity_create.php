@@ -10,7 +10,12 @@
         <div class="logo">
             <img src="public/img/logo.svg">
         </div>
-        <label class="username">USUERNAME</label>
+        <label class="username">
+            <?php
+            if(isset($user_name)) echo $user_name;
+            else echo 'Na'.$_SESSION['userid'];
+            ?>
+        </label>
         <form action="home" method="GET">
             <button class="menubutton"><i class="fas fa-search"></i>HOME</button>
         </form>
@@ -37,8 +42,9 @@
             <form action="add_activity" method="POST">
                 <div class="content_section">
                     <div class="message">
-                        <?php if(isset($messages)) {
-                            foreach ($messages as $message) {
+                        <?php
+                        if(isset($messages)){
+                            foreach($messages as $message) {
                                 echo $message;
                             }
                         }
@@ -47,11 +53,11 @@
                     <div>
                         <label>type</label>
                         <select class="create-activity" name="type" id="a-type">
-                            <option value="cycling">cycling</option>
-                            <option value="jogging">jogging</option>
-                            <option value="gym">gym</option>
-                            <option value="swimming">swimming</option>
-                            <option value="yoga">yoga</option>
+                            <?php
+                            if(isset($activity_types))
+                            foreach ($activity_types as $activity_type): ?>
+                                <option value=<?= $activity_type; ?>><?= $activity_type; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div>

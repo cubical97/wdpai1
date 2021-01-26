@@ -20,7 +20,10 @@ class Activity
         $this->title = $title;
         $this->start_time = $start_time;
         $this->end_time = $end_time;
-        $this->description = $description;
+        if(isset($description))
+            $this->description = $description;
+        else
+            $this->description = null;
         $this->city = $city;
         $this->street = $street;
         $this->number = $number;

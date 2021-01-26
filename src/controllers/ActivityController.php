@@ -1,17 +1,18 @@
 <?php
 
 require_once 'AppController.php';
+require_once 'DefaultController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../models/Activity.php';
 require_once __DIR__.'/../repository/ActivityRepository.php';
 
-class ActivityController extends AppController
+class ActivityController extends DefaultController
 {
-
     private $activityRepository;
 
     public function __construct()
     {
+        parent::__construct();
         $this->activityRepository = new ActivityRepository();
     }
 
@@ -41,43 +42,55 @@ class ActivityController extends AppController
 
         $type = ActionType::getTypeId($type);
 
+        $user_name = $this->userRepository->getUserName();
+        $activty_types = ActionType::getAllNames();
+
+
         if(!preg_match('/^[a-zA-Z0-9\s\.\-_]+/D ', $title))
         {
-            return $this->render('activity_create', ['messages' => ['Wrong name!']]);
+            return $this->render('activity_create', ['messages' => ['Wrong name!'],
+                'user_name' => $user_name, 'activity_types' => $activty_types]);
         }
         if(!preg_match('/^[0-9]{1,2}$/', $time1h) || !preg_match('/^[0-9]{1,2}$/', $time1m)
         || !preg_match('/^[0-9]{1,2}$/', $time2h) || !preg_match('/^[0-9]{1,2}$/', $time2m))
         {
-            return $this->render('activity_create', ['messages' => ['Wrong time!']]);
+            return $this->render('activity_create', ['messages' => ['Wrong time!'],
+                'user_name' => $user_name, 'activity_types' => $activty_types]);
         }
         else {
             if( $time2h < $time1h || ( $time2h == $time1h && $time2m <= $time1m ))
-                return $this->render('activity_create', ['messages' => ['end time must be later!']]);
+                return $this->render('activity_create', ['messages' => ['end time must be later!'],
+                    'user_name' => $user_name, 'activity_types' => $activty_types]);
         }
 
         if(!preg_match('/^[0-9]{1,2}/', $date1) || !preg_match('/^[0-9]{1,2}/', $date2)
             || !preg_match('/^[0-9]{1,2}/', $date3))
         {
-            return $this->render('activity_create', ['messages' => ['Wrong date!']]);
+            return $this->render('activity_create', ['messages' => ['Wrong date!'],
+                'user_name' => $user_name, 'activity_types' => $activty_types]);
         }
         else {
             if($date1<1 || $date2<1 || $date3<2000 || $date1>31 || $date2>12 || $date3>9999 )
-                return $this->render('activity_create', ['messages' => ['Wrong date!']]);
+                return $this->render('activity_create', ['messages' => ['Wrong date!'],
+                    'user_name' => $user_name, 'activity_types' => $activty_types]);
         }
 
         if(!preg_match('/^[0-9]{1,10}/D ', $max_participants))
         {
-            return $this->render('activity_create', ['messages' => ['wrong max number (1-100)']]);
+            return $this->render('activity_create', ['messages' => ['wrong max number (1-100)'],
+                'user_name' => $user_name, 'activity_types' => $activty_types]);
         }
         else {
             if($max_participants<1 || $max_participants>100)
-                return $this->render('activity_create', ['messages' => ['wrong max number (1-100)']]);
+                return $this->render('activity_create', ['messages' => ['wrong max number (1-100)'],
+                    'user_name' => $user_name, 'activity_types' => $activty_types]);
         }
 
         if(!preg_match('/^[0-9]{1,4}/', $address1) || !preg_match('/^[a-zA-Z0-9\s\.\-_]{1,40}/', $address2)
             || !preg_match('/^[a-zA-Z0-9\s\.\-_]{1,40}/', $address3))
         {
-            return $this->render('activity_create', ['messages' => ['wrong address']]);
+            return $this->render('activity_create', ['messages' => ['wrong address'],
+                'user_name' => $user_name, 'activity_types' => $activty_types]);
         }
 
         $date = $date1.'-'.$date2.'-'.$date3;
@@ -109,5 +122,10 @@ class ActivityController extends AppController
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/home");
+    }
+
+    public function get_activity_types(): array {
+
+        return ActionType::getAllNames();
     }
 }

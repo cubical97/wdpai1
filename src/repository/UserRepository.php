@@ -19,6 +19,9 @@ class UserRepository extends Repository
             return null;
         }
 
+        $_SESSION['logon'] = 1;
+        $_SESSION['userid'] = $user['id_u'];
+
         return new User(
             $user['email'],
             $user['password'],
@@ -68,4 +71,19 @@ class UserRepository extends Repository
         return $data['id_u'];
     }
 
+    public function getUserName(): string
+    {
+        $stmt = $this->database->connect()->prepare('
+                SELECT * FROM v_users_details WHERE id_u = :id_u
+                ');
+        $stmt->bindParam(':id_u',$_SESSION['userid'],PDO::PARAM_STR);
+        $stmt->execute();
+
+        $names = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($names == false) {
+            return "-unknown-";
+        }
+        return $names["name"];
+    }
 }
