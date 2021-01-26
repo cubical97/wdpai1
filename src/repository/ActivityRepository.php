@@ -28,8 +28,7 @@ class ActivityRepository extends Repository
             $activity['description'],
             $activity['city'],
             $activity['street'],
-            $activity['number'],
-            $activity['max_participants'],
+            $activity['number']
         );
     }
 
@@ -40,8 +39,8 @@ class ActivityRepository extends Repository
         $assignedById = $_SESSION['userid'];
 
         $stmt = $this->database->connect()->prepare('
-        INSERT INTO activities (title, created_at, id_u, start_time, end_time, type, description, max_participants)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO activities (title, created_at, id_u, start_time, end_time, type, description)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
         ');
 
         $stmt->execute([
@@ -52,7 +51,6 @@ class ActivityRepository extends Repository
             $activity->getEndtime(),
             $activity->getType(),
             $activity->getDescription(),
-            $activity->getMaxParticipants()
         ]);
 
         $id_activity = $this->getActivityId($activity);
@@ -83,18 +81,15 @@ class ActivityRepository extends Repository
     public function getActivityId(Activity $activity): int
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.activities WHERE title = :title AND type = :type AND description = :description
-         AND max_participants = :max_participants');
+            SELECT * FROM public.activities WHERE title = :title AND type = :type AND description = :description');
 
         $title = $activity->getTitle();
         $type = $activity->getType();
         $descr = $activity->getDescription();
-        $max_par = $activity->getMaxParticipants();
 
         $stmt->bindParam(':title', $title, PDO::PARAM_STR);
         $stmt->bindParam(':type', $type, PDO::PARAM_STR);
         $stmt->bindParam(':description', $descr, PDO::PARAM_STR);
-        $stmt->bindParam(':max_participants', $max_par, PDO::PARAM_STR);
         $stmt->execute();
 
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -136,7 +131,6 @@ class ActivityRepository extends Repository
                 $activity['city'],
                 $activity['street'],
                 $activity['number'],
-                $activity['max_participants'],
                 ActionType::getTypeIcon($activity['type']),
                 $activity['id_a']
             );
@@ -172,7 +166,6 @@ class ActivityRepository extends Repository
                     $activity['city'],
                     $activity['street'],
                     $activity['number'],
-                    $activity['max_participants'],
                     ActionType::getTypeIcon($activity['type']),
                     $activity['id_a']
                 );
@@ -208,11 +201,41 @@ class ActivityRepository extends Repository
                 $activity['city'],
                 $activity['street'],
                 $activity['number'],
-                $activity['max_participants'],
                 ActionType::getTypeIcon($activity['type']),
                 $activity['id_a']
             );
         }
+        return $result;
+    }
+
+    public function getActivityInfo(): ?Activity
+    {
+        $result = null;
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM v_activities_info WHERE (v_activities_info.id_a = :id_a);
+            ');
+
+        $id_a = 23; //TODO get activity_ID from POST
+
+        $stmt->bindParam(':id_a', $id_a, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $activity = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $result = new Activity(
+            ActionType::getTypeName($activity['type']),
+            $activity['title'],
+            $activity['start_time'],
+            $activity['end_time'],
+            $activity['description'],
+            $activity['city'],
+            $activity['street'],
+            $activity['number'],
+            ActionType::getTypeIcon($activity['type']),
+            $activity['id_a']
+        );
+
         return $result;
     }
 }

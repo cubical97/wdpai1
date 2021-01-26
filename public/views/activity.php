@@ -31,7 +31,39 @@
         <h2><i class="fas fa-cubes"></i>ACTIVITY</h2>
 
         <div class="content">
-            no content yet
+
+            <div class="activ_header">
+                <h2>no member</h2>
+                <a id="activ-1" class="menubutton">JOIN</a>
+                <a id="activ-1" class="menubutton">LEFT</a>
+                <a id="activ-1" class="menubutton">DELETE</a>
+            </div>
+
+            <div class="activ_info">
+                <div class="activ_header">
+                    <i class="fas fa-cog"></i>
+                    <h1>gym</h1>
+                </div>
+                <h2>Title</h2>
+                <div>description description description description description </div>
+                <div>
+                    <h2>Start time:</h2>
+                    <h2>2021-01-01 12:13:14</h2>
+                </div>
+                <div>
+                    <h2>End time:</h2>
+                    <h2>2021-01-01 12:13:14</h2>
+                </div>
+                <div>
+                    <h2>Place:</h2>
+                    <h2>number Street City</h2>
+                </div>
+
+            </div>
+
+
+            </div>
+
         </div>
     </main>
 

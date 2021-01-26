@@ -89,9 +89,6 @@ class SecurityController extends AppController
             return $this->render('register', ['messages' => ['Different passwords!']]);
         }
 
-        //find if email is used
-        //create user
-
         $user = new User($email, sha1($password1), $name, $surname, 0 );
 
         $this->userRepository->addUser($user);

@@ -34,8 +34,6 @@ class ActivityController extends DefaultController
         $date2 = $_POST["date2"];
         $date3 = $_POST["date3"];
 
-        $max_participants = $_POST["maxmembers"];
-
         $address1 = $_POST["location_nr"];
         $address2 = $_POST["location_street"];
         $address3 = $_POST["location_city"];
@@ -75,17 +73,6 @@ class ActivityController extends DefaultController
                     'user_name' => $user_name, 'activity_types' => $activty_types]);
         }
 
-        if(!preg_match('/^[0-9]{1,10}/D ', $max_participants))
-        {
-            return $this->render('activity_create', ['messages' => ['wrong max number (1-100)'],
-                'user_name' => $user_name, 'activity_types' => $activty_types]);
-        }
-        else {
-            if($max_participants<1 || $max_participants>100)
-                return $this->render('activity_create', ['messages' => ['wrong max number (1-100)'],
-                    'user_name' => $user_name, 'activity_types' => $activty_types]);
-        }
-
         if(!preg_match('/^[0-9]{1,4}/', $address1) || !preg_match('/^[a-zA-Z0-9\s\.\-_]{1,40}/', $address2)
             || !preg_match('/^[a-zA-Z0-9\s\.\-_]{1,40}/', $address3))
         {
@@ -101,7 +88,7 @@ class ActivityController extends DefaultController
         $description = $_POST["description"];
 
         $activity = new Activity($type, $title, $start_time, $end_time, $description, $address3,
-            $address2, $address1, $max_participants);
+            $address2, $address1);
 
         $this->activityRepository->addActivity($activity);
 

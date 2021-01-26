@@ -79,10 +79,6 @@
                         </div>
                     </div>
                     <div>
-                        <label>max members "8"</label>
-                        <input class="create-activity" name="maxmembers" type="text" placeholder="-max_members-">
-                    </div>
-                    <div>
                         <label>location</label>
                         <div>
                             <input class="create-activity" name="location_nr" type="text" placeholder="nr">

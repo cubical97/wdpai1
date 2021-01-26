@@ -26,20 +26,23 @@ class DefaultController extends AppController {
         $user_name = $this->userRepository->getUserName();
         $activities_assigned = $this->activityRepository->getHeaderActivs();
         $activty_types = ActionType::getAllNames();
-        $this->render('home', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned, 'activity_types' => $activty_types]);
+        $this->render('home', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned,
+            'activity_types' => $activty_types]);
     }
 
     public function myactivities() {
         $user_name = $this->userRepository->getUserName();
         $activities_assigned = $this->activityRepository->getHeaderActivs();
         $user_own_activities = $this->activityRepository->getUserActivs();
-        $this->render('myactivities', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned, 'user_own_activities' => $user_own_activities]);
+        $this->render('myactivities', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned,
+            'user_own_activities' => $user_own_activities]);
     }
     public function activity_create() {
         $user_name = $this->userRepository->getUserName();
         $activities_assigned = $this->activityRepository->getHeaderActivs();
         $activty_types = ActionType::getAllNames();
-        $this->render('activity_create', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned, 'activity_types' => $activty_types]);
+        $this->render('activity_create', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned,
+            'activity_types' => $activty_types]);
     }
     public function options() {
         $user_name = $this->userRepository->getUserName();
@@ -49,7 +52,9 @@ class DefaultController extends AppController {
     public function activity() {
         $user_name = $this->userRepository->getUserName();
         $activities_assigned = $this->activityRepository->getHeaderActivs();
-        $this->render('activity', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned]);
+        $user_activities = $this->activityRepository->getActivityInfo();
+        $this->render('activity', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned,
+            'user_activities' => $user_activities]);
     }
 
     // extra  extra  extra  extra  extra  extra  extra  extra  extra

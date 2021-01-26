@@ -10,13 +10,13 @@ class Activity
     private $city;
     private $street;
     private $number;
-    private $max_participants;
     private $description;
     private $icon;
     private $id_a;
+    private $assigned_by;
 
     public function __construct(string $type, string $title, string $start_time, string $end_time, string $description, string $city,
-                                string $street, string $number, int $max_participants, string $icon=null, int $id_a=null)
+                                string $street, string $number, string $icon=null, int $id_a=null, $assigned_by=null)
     {
         $this->type = $type;
         $this->title = $title;
@@ -29,12 +29,21 @@ class Activity
         $this->city = $city;
         $this->street = $street;
         $this->number = $number;
-        $this->max_participants = $max_participants;
 
         $this->setIcon($icon);
         $this->setIdA($id_a);
+        $this->setAssignedBy($assigned_by);
     }
 
+    public function getAssignedBy()
+    {
+        return $this->assigned_by;
+    }
+
+    public function setAssignedBy($assigned_by): void
+    {
+        $this->assigned_by = $assigned_by;
+    }
 
     public function getIcon(): ?string
     {
@@ -74,16 +83,6 @@ class Activity
     public function setNumber(string $number): void
     {
         $this->number = $number;
-    }
-
-    public function getMaxParticipants(): int
-    {
-        return $this->max_participants;
-    }
-
-    public function setMaxParticipants(int $max_participants): void
-    {
-        $this->max_participants = $max_participants;
     }
 
     public function getType(): string

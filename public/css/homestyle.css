@@ -120,6 +120,35 @@ input {
     width: 1.2em;
 }
 
+.activ_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #0090FF;
+}
+.activ_header>a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.activ_header>i {
+    font-size: 2em;
+}
+
+.activ_info {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    background: #F1F9FF 0% 0% no-repeat padding-box;
+}
+
+.activ_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
 section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
