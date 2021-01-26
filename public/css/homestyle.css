@@ -70,10 +70,28 @@ img {
     background-color: #FFFF50;
     margin: 1em;
 
+    display: flex;
+    flex-direction: column;
+
     justify-content: center;
     align-items: center;
     border: none;
     box-shadow: 0px 3px 6px #00000029;
+}
+
+.activity-block>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+
+}
+
+.activ1 {
+    margin: 0em;
 }
 
 .search-bar {
@@ -99,7 +117,7 @@ input {
 }
 
 .fa, .fas{
-    width: 1em;
+    width: 1.2em;
 }
 
 section {
@@ -112,25 +130,37 @@ section {
 
 .activity {
     background-color: #FFFF50;
-}
-.activity>div {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.activ1 {
-    height: 40%;
+.activity>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
-.activ2 {
-    height: 20%;
+.activity>p {
+    margin-block-end: 0em;
+}
+
+.activity>h2 {
+    margin-block-start: 0.2em;
 }
 
 h2 {
     font-size: 1em;
     padding-left: 0.5em;
     padding-right: 0.5em;
+}
+
+a>div>h2 {
+    margin: 0em;
+}
+a>div>i {
+    margin: 0.5em;
 }
 
 .content_section {

@@ -25,6 +25,7 @@ class DefaultController extends AppController {
     public function home() {
         $user_name = $this->userRepository->getUserName();
         $activty_types = ActionType::getAllNames();
+        $activities_assigned = //TODO <---
         $this->render('home', ['user_name' => $user_name, 'activity_types' => $activty_types]);
     }
 
