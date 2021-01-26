@@ -17,13 +17,13 @@
         <?php
         if(isset($activities_assigned))
             foreach ($activities_assigned as $activity): ?>
-                <a id="activ-1" class="activity-block">
+                <div id="<?= $activity->getIdA(); ?>" class="activity-block">
                     <div class="avtiv1">
                         <i class="<?= $activity->getIcon() ?>"></i>
                         <h2><?= $activity->getTitle(); ?></h2>
                     </div>
                     <h2><?= $activity->getStartTime(); ?></h2>
-                </a>
+                </div>
             <?php endforeach; ?>
 
     </section>
@@ -55,7 +55,7 @@
             <?php
             if(isset($activities_find))
                 foreach ($activities_find as $activity): ?>
-                    <div id="activ-1" class="activity">
+                    <div id="<?= $activity->getIdA(); ?>" class="activity">
                         <div class="avtiv1">
                             <i class="<?= $activity->getIcon() ?>"></i>
                             <h2><?= $activity->getTitle(); ?></h2>

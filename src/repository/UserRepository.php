@@ -105,14 +105,27 @@ class UserRepository extends Repository
 
         $id_u = $_SESSION['userid'];
 
-        //TODO
-
+        $stmt = $this->database->connect()->prepare('
+            UPDATE public.users_details
+            SET name = :name
+            WHERE id_u = :id_u;
+            ');
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':id_u', $id_u, PDO::PARAM_STR);
+        $stmt->execute();
     }
-    public function changeUserPassword(string $pass){
+    public function changeUserPassword(string $password1, string $password2){
 
         $id_u = $_SESSION['userid'];
 
-        //TODO
-
+        $stmt = $this->database->connect()->prepare('
+            UPDATE public.users
+            SET password = :password2
+            WHERE id_u = :id_u AND password = :password1;
+            ');
+        $stmt->bindParam(':id_u', $id_u, PDO::PARAM_STR);
+        $stmt->bindParam(':password2', $password2, PDO::PARAM_STR);
+        $stmt->bindParam(':password1', $password1, PDO::PARAM_STR);
+        $stmt->execute();
     }
 }
