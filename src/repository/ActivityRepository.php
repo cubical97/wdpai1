@@ -104,20 +104,18 @@ class ActivityRepository extends Repository
     {
         $result = [];
 
-//        if ($name == null) {
-//
-//            die('name set:'.$name);
-//
-//            $stmt = $this->database->connect()->prepare('
-//            SELECT * FROM v_activities_info WHERE title = :name AND type = :type AND end_time>NOW()');
-//
-//            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-//            $stmt->bindParam(':type', $type, PDO::PARAM_STR);
-//            $stmt->execute();
-//
-//            $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//        }
-//        else {
+        if (!is_null($name) and (strlen($name) > 0)) {
+
+            $stmt = $this->database->connect()->prepare('
+            SELECT * FROM v_activities_info WHERE title = :name AND type = :type AND end_time>NOW()');
+
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':type', $type, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        else {
 
             $stmt = $this->database->connect()->prepare('
             SELECT * FROM v_activities_info WHERE type = :type AND end_time>NOW()');
@@ -126,7 +124,7 @@ class ActivityRepository extends Repository
             $stmt->execute();
 
             $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        //}
+        }
 
         foreach ($activities as $activity) {
             $result[] = new Activity(
@@ -139,10 +137,15 @@ class ActivityRepository extends Repository
                 $activity['street'],
                 $activity['number'],
                 $activity['max_participants'],
-                ActionType::getTypeIcon($activity['type'])
+                ActionType::getTypeIcon($activity['type']),
+                $activity['id_a']
             );
         }
-
         return $result;
+    }
+
+    public function getHeaderActivs(): ?array
+    {
+        return null;
     }
 }

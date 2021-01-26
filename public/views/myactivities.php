@@ -13,9 +13,19 @@
 
     <main>
         <section class="activities_list">
-            <button class="activity-block">project 1</button>
-            <button class="activity-block">project 2</button>
-            <button class="activity-block">project 3</button>
+
+            <?php
+            if(isset($activities_assigned))
+                foreach ($activities_assigned as $activity): ?>
+                    <a id="activ-1" class="activity-block">
+                        <div class="avtiv1">
+                            <i class="<?= $activity->getIcon() ?>"></i>
+                            <h2><?= $activity->getTitle(); ?></h2>
+                        </div>
+                        <h2><?= $activity->getStartTime(); ?></h2>
+                    </a>
+                <?php endforeach; ?>
+
         </section>
         <div class="content">
             <section class="activities">

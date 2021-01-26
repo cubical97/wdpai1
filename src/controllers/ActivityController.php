@@ -109,25 +109,4 @@ class ActivityController extends DefaultController
         header("Location: {$url}/myactivities");
     }
 
-    public function home_find() {
-        if(!$this->isPost()) {
-            $user_name = $this->userRepository->getUserName();
-            $activty_types = ActionType::getAllNames();
-            $this->render('home', ['user_name' => $user_name, 'activity_types' => $activty_types]);
-        }
-
-        $find = $_POST["find"];
-        $type = ActionType::getTypeId($_POST["type"]);
-
-        $user_name = $this->userRepository->getUserName();
-        $activty_types = ActionType::getAllNames();
-        $activities_find = $this->activityRepository->findActivities($find, $type);
-        $this->render('home', ['user_name' => $user_name, 'activity_types' => $activty_types,
-            'activities_find' => $activities_find]);
-    }
-
-    public function get_activity_types(): array {
-
-        return ActionType::getAllNames();
-    }
 }

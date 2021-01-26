@@ -23,13 +23,13 @@ Routing::post('logout', 'SecurityController');
 
 Routing::post('add_activity', 'ActivityController');
 Routing::post('find_activity', 'ActivityController');
-Routing::get('home_find', 'ActivityController');
 
 Routing::get('home', 'DefaultController');
 Routing::get('myactivities', 'DefaultController');
 Routing::get('activity_create', 'DefaultController');
 Routing::get('options', 'DefaultController');
 Routing::get('activity', 'DefaultController');
+Routing::get('home_find', 'DefaultController');
 
 Routing::run($path);
 
