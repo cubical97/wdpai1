@@ -10,6 +10,7 @@
 </label>
 
 <?php include('header2.php'); ?>
+
 <main>
     <section class="activities_list">
 
