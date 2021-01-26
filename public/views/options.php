@@ -27,6 +27,9 @@
                 <?php endforeach; ?>
 
         </section>
+
+        <h2><i class="fas fa-cog"></i>OPTIONS</h2>
+
         <div class="content">
             <div class="content_section">
                 <div class="message">

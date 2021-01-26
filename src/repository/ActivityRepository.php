@@ -6,11 +6,12 @@ require_once __DIR__.'/../models/Activity.php';
 class ActivityRepository extends Repository
 {
 
-    public function getActivity(string $id): ?Activity{
+    public function getActivity(string $id): ?Activity
+    {
         $stmt = $this->database->connect()->prepare('
         SELECT * FROM v_activities_info WHERE id = :id
         ');
-        $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
 
         $activity = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -114,8 +115,7 @@ class ActivityRepository extends Repository
             $stmt->execute();
 
             $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
-        else {
+        } else {
 
             $stmt = $this->database->connect()->prepare('
             SELECT * FROM v_activities_info WHERE type = :type AND end_time>NOW()');
@@ -146,6 +146,73 @@ class ActivityRepository extends Repository
 
     public function getHeaderActivs(): ?array
     {
-        return null;
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM (v_activities_info LEFT JOIN public.users_activities ua ON (v_activities_info.id_a = ua.id_a))
+            WHERE ua.id_u = :id_u AND v_activities_info.end_time>NOW();
+            ');
+
+        $id_u = $_SESSION['userid'];
+
+        $stmt->bindParam(':id_u', $id_u, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $max = 3;
+        foreach ($activities as $activity) {
+            if ($max > 0) {
+                $result[] = new Activity(
+                    ActionType::getTypeName($activity['type']),
+                    $activity['title'],
+                    $activity['start_time'],
+                    $activity['end_time'],
+                    $activity['description'],
+                    $activity['city'],
+                    $activity['street'],
+                    $activity['number'],
+                    $activity['max_participants'],
+                    ActionType::getTypeIcon($activity['type']),
+                    $activity['id_a']
+                );
+            }
+            $max--;
+        }
+
+        return $result;
+    }
+
+    public function getUserActivs(): ?array
+    {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM v_activities_info WHERE (v_activities_info.id_assigned_by = :id_u AND v_activities_info.end_time>NOW());
+            ');
+
+        $id_u = $_SESSION['userid'];
+
+        $stmt->bindParam(':id_u', $id_u, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($activities as $activity) {
+            $result[] = new Activity(
+                ActionType::getTypeName($activity['type']),
+                $activity['title'],
+                $activity['start_time'],
+                $activity['end_time'],
+                $activity['description'],
+                $activity['city'],
+                $activity['street'],
+                $activity['number'],
+                $activity['max_participants'],
+                ActionType::getTypeIcon($activity['type']),
+                $activity['id_a']
+            );
+        }
+        return $result;
     }
 }

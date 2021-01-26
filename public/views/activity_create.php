@@ -27,6 +27,9 @@
                 <?php endforeach; ?>
 
         </section>
+
+        <h2><i class="fas fa-plus"></i>CREATE ACTIVITY</h2>
+
         <div class="content">
             <form action="add_activity" method="POST">
                 <div class="content_section">

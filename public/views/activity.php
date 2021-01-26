@@ -27,6 +27,9 @@
                 <?php endforeach; ?>
 
         </section>
+
+        <h2><i class="fas fa-cubes"></i>ACTIVITY</h2>
+
         <div class="content">
             no content yet
         </div>

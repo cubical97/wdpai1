@@ -27,6 +27,9 @@
             <?php endforeach; ?>
 
     </section>
+
+    <h2><i class="fas fa-search"></i>HOME</h2>
+
     <div class="content">
         <form action="home_find" method="POST">
             <header>
@@ -60,7 +63,7 @@
                         <p>start time</p>
                         <h2><?= $activity->getStartTime(); ?></h2>
                         <p>end time</p>
-                        <h2><?= $activity->getStartTime(); ?></h2>
+                        <h2><?= $activity->getEndtime(); ?></h2>
 
                     </div>
             <?php endforeach; ?>

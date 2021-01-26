@@ -24,15 +24,16 @@ class DefaultController extends AppController {
     }
     public function home() {
         $user_name = $this->userRepository->getUserName();
-        $activty_types = ActionType::getAllNames();
         $activities_assigned = $this->activityRepository->getHeaderActivs();
+        $activty_types = ActionType::getAllNames();
         $this->render('home', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned, 'activity_types' => $activty_types]);
     }
 
     public function myactivities() {
         $user_name = $this->userRepository->getUserName();
         $activities_assigned = $this->activityRepository->getHeaderActivs();
-        $this->render('myactivities', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned]);
+        $user_own_activities = $this->activityRepository->getUserActivs();
+        $this->render('myactivities', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned, 'user_own_activities' => $user_own_activities]);
     }
     public function activity_create() {
         $user_name = $this->userRepository->getUserName();
@@ -63,11 +64,13 @@ class DefaultController extends AppController {
         $find = $_POST["find"];
         $type = ActionType::getTypeId($_POST["type"]);
 
+
         $user_name = $this->userRepository->getUserName();
+        $activities_assigned = $this->activityRepository->getHeaderActivs();
         $activty_types = ActionType::getAllNames();
         $activities_find = $this->activityRepository->findActivities($find, $type);
-        $this->render('home', ['user_name' => $user_name, 'activity_types' => $activty_types,
-            'activities_find' => $activities_find]);
+        $this->render('home', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned,
+            'activity_types' => $activty_types, 'activities_find' => $activities_find]);
     }
 }
 
