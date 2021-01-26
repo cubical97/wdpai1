@@ -20,7 +20,7 @@ Routing::post('register', 'SecurityController');
 Routing::post('logout', 'SecurityController');
 
 Routing::post('add_activity', 'ActivityController');
-Routing::post('find_activity', 'ActivityController');
+Routing::get('get_activity', 'ActivityController');
 
 Routing::get('home', 'DefaultController');
 Routing::get('myactivities', 'DefaultController');

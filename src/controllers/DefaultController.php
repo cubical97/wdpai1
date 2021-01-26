@@ -50,10 +50,13 @@ class DefaultController extends AppController {
         $this->render('options', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned]);
     }
 
-    public function activity() {
+    public function activity(string $id) {
+
+        $id = intval($id);
+
         $user_name = $this->userRepository->getUserName();
-        $activities_assigned = $this->activityRepository->getHeaderActivs();
-        $user_activities = $this->activityRepository->getActivityInfo();
+        $user_activities = $this->activityRepository->getHeaderActivs();
+        $activities_assigned = $this->activityRepository->getActivityInfo($id);
         $this->render('activity', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned,
             'user_activities' => $user_activities]);
     }
@@ -124,6 +127,7 @@ class DefaultController extends AppController {
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/options");
     }
+
 }
 
 ?>

@@ -96,4 +96,9 @@ class ActivityController extends DefaultController
         header("Location: {$url}/myactivities");
     }
 
+    public function get_activity(int $id_a) {
+        $activity = $this->get_activity($id_a);
+
+        http_response_code(200);
+    }
 }

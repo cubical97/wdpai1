@@ -88,7 +88,7 @@ class ActivityRepository extends Repository
         $descr = $activity->getDescription();
 
         $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-        $stmt->bindParam(':type', $type, PDO::PARAM_STR);
+        $stmt->bindParam(':type', $type, PDO::PARAM_INT);
         $stmt->bindParam(':description', $descr, PDO::PARAM_STR);
         $stmt->execute();
 
@@ -108,7 +108,7 @@ class ActivityRepository extends Repository
             SELECT * FROM v_activities_info WHERE title = :name AND type = :type AND end_time>NOW()');
 
             $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-            $stmt->bindParam(':type', $type, PDO::PARAM_STR);
+            $stmt->bindParam(':type', $type, PDO::PARAM_INT);
             $stmt->execute();
 
             $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -117,7 +117,7 @@ class ActivityRepository extends Repository
             $stmt = $this->database->connect()->prepare('
             SELECT * FROM v_activities_info WHERE type = :type AND end_time>NOW()');
 
-            $stmt->bindParam(':type', $type, PDO::PARAM_STR);
+            $stmt->bindParam(':type', $type, PDO::PARAM_INT);
             $stmt->execute();
 
             $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -151,7 +151,7 @@ class ActivityRepository extends Repository
 
         $id_u = $_SESSION['userid'];
 
-        $stmt->bindParam(':id_u', $id_u, PDO::PARAM_STR);
+        $stmt->bindParam(':id_u', $id_u, PDO::PARAM_INT);
         $stmt->execute();
 
         $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -188,7 +188,7 @@ class ActivityRepository extends Repository
 
         $id_u = $_SESSION['userid'];
 
-        $stmt->bindParam(':id_u', $id_u, PDO::PARAM_STR);
+        $stmt->bindParam(':id_u', $id_u, PDO::PARAM_INT);
         $stmt->execute();
 
         $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -210,7 +210,7 @@ class ActivityRepository extends Repository
         return $result;
     }
 
-    public function getActivityInfo(): ?Activity
+    public function getActivityInfo(int $id_a): ?Activity         //TODO get activity_ID
     {
         $result = null;
 
@@ -218,9 +218,7 @@ class ActivityRepository extends Repository
             SELECT * FROM v_activities_info WHERE (v_activities_info.id_a = :id_a);
             ');
 
-        $id_a = 23; //TODO get activity_ID from POST
-
-        $stmt->bindParam(':id_a', $id_a, PDO::PARAM_STR);
+        $stmt->bindParam(':id_a', $id_a, PDO::PARAM_INT);
         $stmt->execute();
 
         $activity = $stmt->fetch(PDO::FETCH_ASSOC);

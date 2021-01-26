@@ -16,7 +16,7 @@ class Activity
     private $assigned_by;
 
     public function __construct(string $type, string $title, string $start_time, string $end_time, string $description, string $city,
-                                string $street, string $number, string $icon=null, int $id_a=null, $assigned_by=null)
+                                string $street, string $number, string $icon=null, int $id_a=null, int $assigned_by=null)
     {
         $this->type = $type;
         $this->title = $title;

@@ -32,6 +32,19 @@
 
         <div class="content">
 
+            <?php
+            if(isset($activities_assigned)): ?>
+                <div id="<?= $activities_assigned->getIdA(); ?>" class="activity-block">
+                    <div class="avtiv1">
+                        <i class="<?= $activities_assigned->getIcon() ?>"></i>
+                        <h2><?= $activities_assigned->getTitle(); ?></h2>
+                    </div>
+                    <h2><?= $activities_assigned->getStartTime(); ?></h2>
+                </div>
+            <?php endif ?>
+
+            <div>
+
             <div class="activ_header">
                 <h2>no member</h2>
                 <a id="activ-1" class="menubutton">JOIN</a>
@@ -61,9 +74,7 @@
 
             </div>
 
-
             </div>
-
         </div>
     </main>
 
