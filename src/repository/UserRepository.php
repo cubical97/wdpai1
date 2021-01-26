@@ -44,15 +44,29 @@ class UserRepository extends Repository
             $user->getPassword(),
         ]);
 
-        $id_last_user = $this->getUsersId($user);
+        $email = $user->getEmail();
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM users WHERE email = :email
+            ');
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $user1 = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user1 == false) {
+            return null;
+        }
+
+        $_SESSION['logon'] = 1;
+        $_SESSION['userid'] = $user1['id_u'];
 
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO users_details (id_user, name, surname)
+            INSERT INTO users_details (id_u, name, surname)
             VALUES (?, ?, ?)
         ');
 
         $stmt->execute([
-            $id_last_user,
+            $_SESSION['userid'],
             $user->getName(),
             $user->getSurname()
         ]);
@@ -85,5 +99,20 @@ class UserRepository extends Repository
             return "-unknown-";
         }
         return $names["name"];
+    }
+
+    public function changeUserName(string $name){
+
+        $id_u = $_SESSION['userid'];
+
+        //TODO
+
+    }
+    public function changeUserPassword(string $pass){
+
+        $id_u = $_SESSION['userid'];
+
+        //TODO
+
     }
 }

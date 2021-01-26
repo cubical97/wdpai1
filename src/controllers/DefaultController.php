@@ -49,6 +49,7 @@ class DefaultController extends AppController {
         $activities_assigned = $this->activityRepository->getHeaderActivs();
         $this->render('options', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned]);
     }
+
     public function activity() {
         $user_name = $this->userRepository->getUserName();
         $activities_assigned = $this->activityRepository->getHeaderActivs();
@@ -69,13 +70,59 @@ class DefaultController extends AppController {
         $find = $_POST["find"];
         $type = ActionType::getTypeId($_POST["type"]);
 
-
         $user_name = $this->userRepository->getUserName();
         $activities_assigned = $this->activityRepository->getHeaderActivs();
         $activty_types = ActionType::getAllNames();
         $activities_find = $this->activityRepository->findActivities($find, $type);
         $this->render('home', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned,
             'activity_types' => $activty_types, 'activities_find' => $activities_find]);
+    }
+
+    public function options_update_info() {
+
+        if(!$this->isPost()) {
+            return $this->render('options');
+        }
+
+        $name = null;
+        if(isset($_POST["name"])) {
+            if(preg_match('/^[a-zA-Z]{1,50}$/', $_POST["name"]))
+                $name = $_POST["name"];
+        }
+
+        if(strlen($name) > 0){
+            $this->userRepository->changeUserName($name);
+        }
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/options");
+    }
+
+    public function options_update_password() {
+
+        if(!$this->isPost()) {
+            return $this->render('options');
+        }
+
+        $password1 = $_POST["password1"];
+        $password2 = $_POST["password2"];
+        $password3 = $_POST["password3"];
+
+        if (($password2 !== $password3) or (strlen($password1)<1)) {
+            $user_name = $this->userRepository->getUserName();
+            $activities_assigned = $this->activityRepository->getHeaderActivs();
+            $this->render('options', ['messages' => ['Different passwords!'], 'user_name' => $user_name, 'activities_assigned' => $activities_assigned]);
+        }
+        if (strlen($password2)<5) {
+            $user_name = $this->userRepository->getUserName();
+            $activities_assigned = $this->activityRepository->getHeaderActivs();
+            $this->render('options', ['messages' => ['Weak passwords!'], 'user_name' => $user_name, 'activities_assigned' => $activities_assigned]);
+        }
+
+        $this->userRepository->changeUserPassword(sha1($password1), sha1($password2));
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/options");
     }
 }
 

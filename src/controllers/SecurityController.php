@@ -96,62 +96,6 @@ class SecurityController extends AppController
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/home");
     }
-
-    public function options_update_info() {
-
-        if(!$this->isPost()) {
-            return $this->render('options');
-        }
-
-        if(isset($_POST["name"])) {
-            if(preg_match('/^[a-zA-Z]{1,40}$/', $_POST["name"]))
-                $name = $_POST["name"];
-        }
-        $name = null;
-        if(isset($_POST["surname"])) {
-            if(preg_match('/^[a-zA-Z]{1,40}$/', $_POST["surname"]))
-                $surname = $_POST["surname"];
-        }
-        $surname = null;
-        if(isset($_POST["email"])) {
-            if(preg_match('/^[a-zA-Z0-9\.\-_]+\@[a-zA-Z0-9\.\-_]+\.[a-z]{2,4}$/D ', $_POST["email"]))
-                $email = $_POST["email"];
-        }
-        $email = null;
-        if(isset($_POST["description"])) {
-            if(preg_match('/^[a-zA-Z0-9\.\-_]+/', $_POST["name"]))
-                $description = $_POST["description"];
-        }
-        $description = null;
-
-        // TODO change user informations in db #1
-
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/options");
-    }
-
-    public function options_update_password() {
-
-        if(!$this->isPost()) {
-            return $this->render('options');
-        }
-
-        $password1 = $_POST["password1"];
-        $password2 = $_POST["password2"];
-        $password3 = $_POST["password3"];
-
-        if ($password2 !== $password3) {
-            return $this->render('options', ['messages' => ['Different passwords!']]);
-        }
-        if (strlen($password2)<5) {
-            return $this->render('options', ['messages' => ['Weak passwords!']]);
-        }
-
-        // TODO change user informations in db #2
-
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/options");
-    }
 }
 
 ?>

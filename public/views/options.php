@@ -47,10 +47,6 @@
                         <label>name</label>
                         <input class="create-activity" name="name" type="text" placeholder="Name">
                     </div>
-                    <div>
-                        <label>surname</label>
-                        <input class="create-activity" name="surname" type="text" placeholder="Surname">
-                    </div>
                     <button class="menubutton"><i class="fas fa-wrench"></i>UPDATE</button>
                 </div>
             </form>

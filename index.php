@@ -17,8 +17,6 @@ Routing::get('register', 'DefaultController');
 
 Routing::post('login', 'SecurityController');
 Routing::post('register', 'SecurityController');
-Routing::post('options_update_info', 'SecurityController');
-Routing::post('options_update_password', 'SecurityController');
 Routing::post('logout', 'SecurityController');
 
 Routing::post('add_activity', 'ActivityController');
@@ -29,7 +27,9 @@ Routing::get('myactivities', 'DefaultController');
 Routing::get('activity_create', 'DefaultController');
 Routing::get('options', 'DefaultController');
 Routing::get('activity', 'DefaultController');
-Routing::get('home_find', 'DefaultController');
+Routing::post('home_find', 'DefaultController');
+Routing::post('options_update_info', 'DefaultController');
+Routing::post('options_update_password', 'DefaultController');
 
 Routing::run($path);
 

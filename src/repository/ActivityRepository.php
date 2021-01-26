@@ -102,6 +102,8 @@ class ActivityRepository extends Repository
 
         if (!is_null($name) and (strlen($name) > 0)) {
 
+            $name = '%'.$name.'%';
+
             $stmt = $this->database->connect()->prepare('
             SELECT * FROM v_activities_info WHERE title = :name AND type = :type AND end_time>NOW()');
 
