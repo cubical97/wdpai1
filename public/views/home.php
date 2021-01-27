@@ -9,16 +9,16 @@
 <body>
 <div class="base-container">
     <nav>
-        <div class="logo">
-            <img src="public/img/logo.svg">
-        </div>
+            <div class="logo">
+                <img src="public/img/logo.svg">
+            </div>
 
-<label>
-    <?php
-    if(isset($user_name)) echo $user_name;
-    else echo 'Na'.$_SESSION['userid'];
-    ?>
-</label>
+            <label>
+                <?php
+                if(isset($user_name)) echo $user_name;
+                else echo 'Na'.$_SESSION['userid'];
+                ?>
+            </label>
 
 <?php include('header2.php'); ?>
 
@@ -44,7 +44,7 @@
     <div class="content">
         <form action="home_find" method="POST">
             <header>
-                <div class="search-bar">
+                <div>
                     <input name="find" type="text" placeholder="find activity">
                 </div>
                 <select class="action-type" name="type" id="a-type">

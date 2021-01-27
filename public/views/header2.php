@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+    <div>
         <form action="home" method="GET">
             <button id="home" class="menubutton"><i class="fas fa-search"></i>HOME</button>
         </form>
@@ -14,4 +15,5 @@
         <form action="logout" method="GET">
             <button id="logout" class="menubutton"><i class="fas fa-sign-out-alt"></i>LOGOUT</button>
         </form>
-    </nav>
+    </div>
+</nav>

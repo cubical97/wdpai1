@@ -83,7 +83,17 @@ button {
 }
 
 @media only screen and (max-device-width: 420px) {
-    .container {
+
+    .login-regiter-container {
+        width: 90%;
+        margin: 1em;
+    }
+
+    form.login {
+        width: 90%;
+    }
+
+    .container-login {
         flex-direction: column;
     }
 
@@ -91,16 +101,11 @@ button {
         font-size:36px;
     }
 
-    .login-container, .logo {
-        width: 100%;
+    input.register {
+        width: 80%;
     }
 
     form {
         margin: auto;
-    }
-
-    img {
-        height: 7em;
-        margin: 2em;
     }
 }

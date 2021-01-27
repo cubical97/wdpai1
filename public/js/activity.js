@@ -6,7 +6,7 @@ function showActivity() {
 
     const id = activity.getAttribute("id");
 
-    var link = location.origin+'/';
+    var link = location.origin+'/activity/';
     link = link+id;
 
     location.href = link;

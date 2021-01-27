@@ -178,10 +178,6 @@ h2 {
     width: 100%;
 }
 
-textarea {
-    resize: none;
-}
-
 .content_section>div>div>input {
     width: 33%;
 }
@@ -190,6 +186,10 @@ textarea {
     background-color: #0090FF;
     color: #FFFFFF;
     width: 15em;
+}
+
+textarea {
+    resize: none;
 }
 
 .activ_header {
@@ -207,4 +207,86 @@ textarea {
 
 .message{
     color: #bf0000;
+}
+
+@media only screen and (max-device-width: 420px) {
+
+    .base-container {
+        flex-direction: column;
+    }
+
+    label {
+        margin-top: 0em;
+        margin-bottom: 0em;
+    }
+
+    nav {
+        width: 100vw;
+        height: 20vh;
+
+        display: flex;
+        flex-direction: column;
+        white-space: pre-line;
+    }
+    nav>div {
+        display: flex;
+        flex-direction: row;
+    }
+    .menubutton {
+        font-size:28px;
+        width: 6.5em;
+    }
+
+    main {
+        padding: 0.25em;
+        width: 98vw;
+    }
+
+    header {
+        width: 98vw;
+        padding: 0em;
+    }
+
+    header>button {
+        width: 2em;
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.25em;
+    }
+
+    .activity-block {
+        width: 28%;
+    }
+
+    .activity-block>div>i {
+        font-size:42px;
+    }
+    .activity-block>div>h2 {
+        width: 5em;
+        font-size:28px;
+    }
+    .activity-block>h2 {
+        font-size:30px;
+    }
+
+    .activities_list {
+        width: 90vw;
+    }
+
+    .content_section>div {
+        flex-direction: column;
+        width: 80vw;
+    }
+
+    * {
+        font-size:36px;
+    }
+
+    form {
+        margin: auto;
+    }
 }

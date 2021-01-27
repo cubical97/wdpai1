@@ -18,6 +18,7 @@
             else echo 'Na'.$_SESSION['userid'];
             ?>
         </label>
+        <div>
         <div action="home" method="GET">
             <button id="home" class="menubutton"><i class="fas fa-search"></i>HOME</button>
         </div>
@@ -32,6 +33,7 @@
         </div>
         <div action="logout" method="GET">
             <button id="logout" class="menubutton"><i class="fas fa-sign-out-alt"></i>LOGOUT</button>
+        </div>
         </div>
     </nav>
 
