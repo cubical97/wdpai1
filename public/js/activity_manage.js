@@ -5,7 +5,7 @@ function changeStatus() {
 
     const id = button.getAttribute("id");
 
-    link = "http://localhost:8080/";
+    var link = location.origin+'/';
 
     if(id === "activ-join")
     {

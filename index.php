@@ -8,10 +8,8 @@ if(!isset($_SESSION['ident'])){
 
 require 'Routing.php';
 
-if(!isset($path)) {
-    $path = trim($_SERVER['REQUEST_URI'], '/');
-    $path = parse_url($path, PHP_URL_PATH);
-}
+$path = trim($_SERVER['REQUEST_URI'], '/');
+$path = parse_url($path, PHP_URL_PATH);
 
 Routing::get('', 'DefaultController');
 Routing::get('index', 'DefaultController');

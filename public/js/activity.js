@@ -6,7 +6,8 @@ function showActivity() {
 
     const id = activity.getAttribute("id");
 
-    const link = "http://localhost:8080/activity/"+id;
+    var link = location.origin+'/';
+    link = link+id;
 
     location.href = link;
 }
