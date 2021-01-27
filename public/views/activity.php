@@ -12,7 +12,7 @@
             <img src="./../public/img/logo.svg">
         </div>
 
-        <label class="username">
+        <label>
             <?php
             if(isset($user_name)) echo $user_name;
             else echo 'Na'.$_SESSION['userid'];
@@ -44,8 +44,8 @@
             if(isset($activities_assigned)): ?>
             <div id="<?= $activities_assigned->getIdA(); ?>">
                 <div class="activ_header">
-                    <a id="activ-join" class="menubutton">JOIN</a>
-                    <a id="activ-left" class="menubutton">LEFT</a>
+                    <button id="activ-join" class="menubutton">JOIN</button>
+                    <button id="activ-left" class="menubutton">LEFT</button>
                 </div>
                 <div class="activ_info">
                     <div class="activ_header">

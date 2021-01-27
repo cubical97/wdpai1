@@ -8,7 +8,7 @@
         <div class="logo">
             <img src="public/img/logo.svg">
         </div>
-        <div class="login-container">
+        <div class="login-regiter-container">
             <form class="login" action="login" method="POST">
 
                 <div class="message">
@@ -22,10 +22,10 @@
 
                 <input name="email" type="text" placeholder="email@email.com">
                 <input name="password" type="password" placeholder="password">
-                <button type="submit" class="login">LOGIN</button>
+                <button type="submit">LOGIN</button>
             </form>
             <form action="register" method="GET">
-                <button class="register">REGISTER</button>
+                <button>REGISTER</button>
             </form>
         </div>
     </div>

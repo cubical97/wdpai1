@@ -2,7 +2,7 @@
 
 <?php include('header1.php'); ?>
 
-<label class="username">
+<label>
     <?php
     if(isset($user_name)) echo $user_name;
     else echo 'Na'.$_SESSION['userid'];
@@ -18,7 +18,7 @@
             if(isset($activities_assigned))
                 foreach ($activities_assigned as $activity): ?>
                     <div id="<?= $activity->getIdA(); ?>" class="activity-block">
-                        <div class="avtiv1">
+                        <div>
                             <i class="<?= $activity->getIcon() ?>"></i>
                             <h2><?= $activity->getTitle(); ?></h2>
                         </div>
@@ -45,7 +45,7 @@
                 <div class="content_section">
                     <div>
                         <label>name</label>
-                        <input class="create-activity" name="name" type="text" placeholder="Name">
+                        <input name="name" type="text" placeholder="Name">
                     </div>
                     <button class="menubutton"><i class="fas fa-wrench"></i>UPDATE</button>
                 </div>
@@ -54,15 +54,15 @@
                 <div class="content_section">
                     <div>
                         <label>old password</label>
-                        <input class="create-activity" name="password1" type="password" placeholder="***">
+                        <input name="password1" type="password" placeholder="***">
                     </div>
                     <div>
                         <label>new password</label>
-                        <input class="create-activity" name="password2" type="password" placeholder="***">
+                        <input name="password2" type="password" placeholder="***">
                     </div>
                     <div>
                         <label>new password</label>
-                        <input class="create-activity" name="password3" type="password" placeholder="***">
+                        <input name="password3" type="password" placeholder="***">
                     </div>
                     <button class="menubutton"><i class="fas fa-wrench"></i>CHANGE PASSWORD</button>
                 </div>

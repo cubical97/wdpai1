@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    font: normal normal normal 1em/1em Arial;
 }
 
 .base-container {
@@ -18,6 +19,39 @@ nav {
     flex-direction: column;
     align-items: center;
     background-color: #0090FF;
+    white-space: pre-line;
+}
+
+img {
+    width: 8em;
+    height: auto;
+    margin-top: 1em;
+}
+
+.fa, .fas{
+    width: 1.2em;
+}
+
+label {
+    color: #FFFFFF;
+    text-shadow: 0px 3px 6px #00000029;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+.menubutton {
+    width: 13em;
+    height: 2.5em;
+    margin: 0.25em;
+
+    border: none;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+}
+
+main {
+    width: 80vw;
+    padding: 2em;
 }
 
 header {
@@ -27,52 +61,43 @@ header {
     justify-content: center;
 }
 
-.logo {
-    text-align: center;
-}
-
-img {
-    width: 8em;
+header>div {
+    width: 50%;
     height: auto;
-    margin-top: 1em;
-}
- main {
-     width: 80vw;
-     padding: 2em;
- }
-
-.username {
-    color: #FFFFFF;
-    text-shadow: 0px 3px 6px #00000029;
-    margin-top: 0.3em;
-    margin-bottom: 0.3em;
-    font: normal normal normal 1em/1em Microsoft New Tai Lue;
 }
 
-.menubutton {
-    width: 10em;
-    height: 2em;
-    margin: 0.25em;
+header>div>input {
+    width: 100%;
+    height: 1.6em;
+}
 
+header>button {
     border: none;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
+    background-color: lightslategray;
+    color: #FFFFFF;
+    height: 2em;
 }
 
 .activities_list {
-    width: 80vw;
+    width: 70vw;
     height: 7em;
     display: flex;
     flex-direction: row;
-    padding: 0em;
     align-items: center;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2em;
+    padding: 2em;
+    overflow: auto;
 }
 
 .activity-block {
     width: 28%;
-    height: 5em;
+    height: 7em;
     background-color: #FFFF50;
-    margin: 0em;
 
     display: flex;
     flex-direction: column;
@@ -90,75 +115,10 @@ img {
     align-items: center;
 }
 
-a {
-
-}
-
-.activ1 {
-    margin: 0em;
-}
-
-.search-bar {
-    width: 50%;
-    height: auto;
-}
-
-input {
-    width: 100%;
-    height: 1.6em;
-}
-
-.find, .add-activity {
-    border: none;
-    background-color: lightslategray;
-    color: #FFFFFF;
-    height: 2em;
-}
-
-.add-activity {
-    background-color: #0090FF;
-    margin-left: 2em;
-}
-
-.fa, .fas{
-    width: 1.2em;
-}
-
-.activ_header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: #0090FF;
-}
-.activ_header>a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.activ_header>i {
-    font-size: 2em;
-}
-
-.activ_info {
-    display: flex;
-    flex-direction: column;
-    padding: 2em;
-    background: #F1F9FF 0% 0% no-repeat padding-box;
-}
-
-.activ_header {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-}
-
-section {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2em;
-    padding: 2em;
-    overflow: auto;
+h2 {
+    font-size: 1.2em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 
 .activity {
@@ -176,6 +136,7 @@ section {
     justify-content: center;
     align-items: center;
 }
+
 .activity>p {
     margin-block-end: 0em;
 }
@@ -184,24 +145,11 @@ section {
     margin-block-start: 0.2em;
 }
 
-h2 {
-    font-size: 1em;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-}
-
-a>div>h2 {
-    margin: 0em;
-}
-a>div>i {
-    margin: 0.5em;
-}
-
 .content_section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 1em;
+    //margin-bottom: 1em;
 }
 
 .content_section>div {
@@ -211,6 +159,7 @@ a>div>i {
     width: 55vw;
 }
 .content_section>div>label {
+    color: black;
     width: 8em;
 }
 
@@ -218,8 +167,19 @@ a>div>i {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     width: 100%;
+}
+
+.content_section>div>input {
+    width: 100%;
+}
+.content_section>div>textarea {
+    width: 100%;
+}
+
+textarea {
+    resize: none;
 }
 
 .content_section>div>div>input {
@@ -231,10 +191,20 @@ a>div>i {
     color: #FFFFFF;
     width: 15em;
 }
-.create-activity {
-    width: 50vw;
+
+.activ_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
 }
 
-textarea {
-    resize: none;
+.activ_info {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    background: #F1F9FF 0% 0% no-repeat padding-box;
+}
+
+.message{
+    color: #bf0000;
 }

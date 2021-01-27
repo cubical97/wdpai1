@@ -2,7 +2,7 @@
 
 <?php include('header1.php'); ?>
 
-<label class="username">
+<label>
     <?php
     if(isset($user_name)) echo $user_name;
     else echo 'Na'.$_SESSION['userid'];
@@ -18,7 +18,7 @@
             if(isset($activities_assigned))
                 foreach ($activities_assigned as $activity): ?>
                     <div id="<?= $activity->getIdA(); ?>" class="activity-block">
-                        <div class="avtiv1">
+                        <div>
                             <i class="<?= $activity->getIcon() ?>"></i>
                             <h2><?= $activity->getTitle(); ?></h2>
                         </div>
@@ -37,7 +37,7 @@
                 if(isset($user_own_activities))
                     foreach ($user_own_activities as $activity): ?>
                         <div id="<?= $activity->getIdA(); ?>" class="activity">
-                            <div class="avtiv1">
+                            <div>
                                 <i class="<?= $activity->getIcon() ?>"></i>
                                 <h2><?= $activity->getTitle(); ?></h2>
                             </div>

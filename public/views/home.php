@@ -13,7 +13,7 @@
             <img src="public/img/logo.svg">
         </div>
 
-<label class="username">
+<label>
     <?php
     if(isset($user_name)) echo $user_name;
     else echo 'Na'.$_SESSION['userid'];
@@ -29,7 +29,7 @@
         if(isset($activities_assigned))
             foreach ($activities_assigned as $activity): ?>
                 <div id="<?= $activity->getIdA(); ?>" class="activity-block">
-                    <div class="avtiv1">
+                    <div>
                         <i class="<?= $activity->getIcon() ?>"></i>
                         <h2><?= $activity->getTitle(); ?></h2>
                     </div>
@@ -67,7 +67,7 @@
             if(isset($activities_find))
                 foreach ($activities_find as $activity): ?>
                     <div id="<?= $activity->getIdA(); ?>" class="activity">
-                        <div class="avtiv1">
+                        <div>
                             <i class="<?= $activity->getIcon() ?>"></i>
                             <h2><?= $activity->getTitle(); ?></h2>
                         </div>
