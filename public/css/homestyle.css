@@ -36,6 +36,10 @@ img {
     height: auto;
     margin-top: 1em;
 }
+ main {
+     width: 80vw;
+     padding: 2em;
+ }
 
 .username {
     color: #FFFFFF;
@@ -60,15 +64,15 @@ img {
     height: 7em;
     display: flex;
     flex-direction: row;
-
+    padding: 0em;
     align-items: center;
 }
 
 .activity-block {
-    width: 30%;
+    width: 28%;
     height: 5em;
     background-color: #FFFF50;
-    margin: 1em;
+    margin: 0em;
 
     display: flex;
     flex-direction: column;

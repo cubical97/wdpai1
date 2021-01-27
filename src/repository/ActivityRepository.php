@@ -134,6 +134,7 @@ class ActivityRepository extends Repository
                 ActionType::getTypeIcon($activity['type']),
                 $activity['id_a']
             );
+
         }
         return $result;
     }

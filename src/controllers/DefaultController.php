@@ -24,6 +24,9 @@ class DefaultController extends AppController {
         $this->render('register');
     }
     public function home() {
+        if((!isset($_SESSION['userid'])) or ($_SESSION['userid'] < 1))
+            $this->index();
+
         $user_name = $this->userRepository->getUserName();
         $activities_assigned = $this->activityRepository->getHeaderActivs();
         $activty_types = ActionType::getAllNames();
@@ -32,6 +35,9 @@ class DefaultController extends AppController {
     }
 
     public function myactivities() {
+        if((!isset($_SESSION['userid'])) or ($_SESSION['userid'] < 1))
+            $this->index();
+
         $user_name = $this->userRepository->getUserName();
         $activities_assigned = $this->activityRepository->getHeaderActivs();
         $user_own_activities = $this->activityRepository->getUserActivs();
@@ -39,6 +45,9 @@ class DefaultController extends AppController {
             'user_own_activities' => $user_own_activities]);
     }
     public function activity_create() {
+        if((!isset($_SESSION['userid'])) or ($_SESSION['userid'] < 1))
+            $this->index();
+
         $user_name = $this->userRepository->getUserName();
         $activities_assigned = $this->activityRepository->getHeaderActivs();
         $activty_types = ActionType::getAllNames();
@@ -46,12 +55,18 @@ class DefaultController extends AppController {
             'activity_types' => $activty_types]);
     }
     public function options() {
+        if((!isset($_SESSION['userid'])) or ($_SESSION['userid'] < 1))
+            $this->index();
+
         $user_name = $this->userRepository->getUserName();
         $activities_assigned = $this->activityRepository->getHeaderActivs();
         $this->render('options', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned]);
     }
 
     public function activity(string $id) {
+        if((!isset($_SESSION['userid'])) or ($_SESSION['userid'] < 1))
+            $this->index();
+
         $id = intval($id);
 
         $user_name = $this->userRepository->getUserName();
@@ -62,6 +77,9 @@ class DefaultController extends AppController {
     }
 
     public function home_find() {
+        if((!isset($_SESSION['userid'])) or ($_SESSION['userid'] < 1))
+            $this->index();
+
         if(!$this->isPost()) {
             $user_name = $this->userRepository->getUserName();
             $activities_assigned = $this->activityRepository->getHeaderActivs();
@@ -82,6 +100,8 @@ class DefaultController extends AppController {
     }
 
     public function options_update_info() {
+        if((!isset($_SESSION['userid'])) or ($_SESSION['userid'] < 1))
+            $this->index();
 
         if(!$this->isPost()) {
             return $this->render('options');
@@ -102,6 +122,8 @@ class DefaultController extends AppController {
     }
 
     public function options_update_password() {
+        if((!isset($_SESSION['userid'])) or ($_SESSION['userid'] < 1))
+            $this->index();
 
         if(!$this->isPost()) {
             return $this->render('options');

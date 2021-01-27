@@ -36,21 +36,7 @@
     </nav>
 
     <main>
-        <section class="activities_list">
 
-            <?php
-            if(isset($activities_assigned))
-                foreach ($activities_assigned as $activity): ?>
-                    <div id="<?= $activity->getIdA(); ?>" class="activity-block">
-                        <div class="avtiv1">
-                            <i class="<?= $activity->getIcon() ?>"></i>
-                            <h2><?= $activity->getTitle(); ?></h2>
-                        </div>
-                        <h2><?= $activity->getStartTime(); ?></h2>
-                    </div>
-                <?php endforeach; ?>
-
-        </section>
         <h2><i class="fas fa-cubes"></i>ACTIVITY</h2>
         <div class="content">
 
@@ -58,7 +44,6 @@
             if(isset($activities_assigned)): ?>
             <div id="<?= $activities_assigned->getIdA(); ?>">
                 <div class="activ_header">
-                    <h2>no member</h2>
                     <a id="activ-join" class="menubutton">JOIN</a>
                     <a id="activ-left" class="menubutton">LEFT</a>
                 </div>
@@ -85,6 +70,7 @@
             <?php endif ?>
 
         </div>
+
     </main>
 
 <?php include('footer.php') ?>

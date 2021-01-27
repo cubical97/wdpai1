@@ -85,7 +85,7 @@ class ActivityController extends DefaultController
         if(strlen($date2)==1)
             $date2 = '0'.$date2;
 
-        $date = $date1.'-'.$date2.'-'.$date3;
+        $date = $date3.'-'.$date2.'-'.$date1;
 
         if(strlen($time1h)==1)
             $time1h = '0'.$time1h;
