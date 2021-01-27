@@ -1,0 +1,292 @@
+body {
+    margin: 0;
+    font: normal normal normal 1em/1em Arial;
+}
+
+.base-container {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: row;
+}
+
+nav {
+    width: 20vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #0090FF;
+    white-space: pre-line;
+}
+
+img {
+    width: 8em;
+    height: auto;
+    margin-top: 1em;
+}
+
+.fa, .fas{
+    width: 1.2em;
+}
+
+label {
+    color: #FFFFFF;
+    text-shadow: 0px 3px 6px #00000029;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+.menubutton {
+    width: 13em;
+    height: 2.5em;
+    margin: 0.25em;
+
+    border: none;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+}
+
+main {
+    width: 80vw;
+    padding: 2em;
+}
+
+header {
+    width: 80vw;
+    display: flex;
+    padding: 1em;
+    justify-content: center;
+}
+
+header>div {
+    width: 50%;
+    height: auto;
+}
+
+header>div>input {
+    width: 100%;
+    height: 1.6em;
+}
+
+header>button {
+    border: none;
+    background-color: lightslategray;
+    color: #FFFFFF;
+    height: 2em;
+}
+
+.activities_list {
+    width: 70vw;
+    height: 7em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2em;
+    padding: 2em;
+    overflow: auto;
+}
+
+.activity-block {
+    width: 28%;
+    height: 7em;
+    background-color: #FFFF50;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    border: none;
+    box-shadow: 0px 3px 6px #00000029;
+}
+
+.activity-block>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    font-size: 1.2em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.activity {
+    background-color: #FFFF50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 3px 6px #00000029;
+}
+
+.activity>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.activity>p {
+    margin-block-end: 0em;
+}
+
+.activity>h2 {
+    margin-block-start: 0.2em;
+}
+
+.content_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //margin-bottom: 1em;
+}
+
+.content_section>div {
+    display: flex;
+    flex-direction: row;
+    margin: 1em;
+    width: 55vw;
+}
+.content_section>div>label {
+    color: black;
+    width: 8em;
+}
+
+.content_section>div>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+}
+
+.content_section>div>input {
+    width: 100%;
+}
+.content_section>div>textarea {
+    width: 100%;
+}
+
+.content_section>div>div>input {
+    width: 33%;
+}
+
+.content_section>button {
+    background-color: #0090FF;
+    color: #FFFFFF;
+    width: 15em;
+}
+
+textarea {
+    resize: none;
+}
+
+.activ_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.activ_info {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    background: #F1F9FF 0% 0% no-repeat padding-box;
+}
+
+.message{
+    color: #bf0000;
+}
+
+@media only screen and (max-device-width: 420px) {
+
+    .base-container {
+        flex-direction: column;
+    }
+
+    label {
+        margin-top: 0em;
+        margin-bottom: 0em;
+    }
+
+    nav {
+        width: 100vw;
+        height: 20vh;
+
+        display: flex;
+        flex-direction: column;
+        white-space: pre-line;
+    }
+    nav>div {
+        display: flex;
+        flex-direction: row;
+    }
+    .menubutton {
+        font-size:28px;
+        width: 6.5em;
+    }
+
+    main {
+        padding: 0.25em;
+        width: 98vw;
+    }
+
+    header {
+        width: 98vw;
+        padding: 0em;
+    }
+
+    header>button {
+        width: 2em;
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0.25em;
+    }
+
+    .activity-block {
+        width: 28%;
+    }
+
+    .activity-block>div>i {
+        font-size:42px;
+    }
+    .activity-block>div>h2 {
+        width: 5em;
+        font-size:28px;
+    }
+    .activity-block>h2 {
+        font-size:30px;
+    }
+
+    .activities_list {
+        width: 90vw;
+    }
+
+    .content_section>div {
+        flex-direction: column;
+        width: 80vw;
+    }
+
+    * {
+        font-size:36px;
+    }
+
+    form {
+        margin: auto;
+    }
+}

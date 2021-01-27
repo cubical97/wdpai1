@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+}
+
+.container-login, .container-register {
+    width: 100vw;
+    height: 100vh;
+    background: transparent linear-gradient(180deg, #D2E9FF 0%, #0090FF 100%) 0% 0% no-repeat padding-box;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-register {
+    flex-direction: column;
+}
+
+.logo {
+    width: 30%;
+}
+
+.login-regiter-container {
+    width: 40%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form.login, form.register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #FFFFFFEB 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 6px #00000029;
+}
+
+form.login {
+    width: 80%;
+    height: 40vh;
+    border-radius: 33px;
+}
+
+input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 1em;
+    margin: 1em;
+    width: 50%;
+}
+
+input.register{
+    width: 30em;
+    background: #FFFFFFEB 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 6px #00000029;
+}
+
+label {
+    height: 3em;
+    text-align: center;
+    font: normal normal normal 1em/1em Arial;
+    color: #FFFFFF;
+}
+
+button {
+    width: 14em;
+    border: none;
+    color: white;
+    margin: 1em;
+    line-height: 2.5em;
+
+    background: transparent linear-gradient(180deg, #1DE0FF 0%, #0066FF 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 36px;
+}
+
+.message{
+    color: #bf0000;
+}
+
+@media only screen and (max-device-width: 420px) {
+
+    .login-regiter-container {
+        width: 90%;
+        margin: 1em;
+    }
+
+    form.login {
+        width: 90%;
+    }
+
+    .container-login {
+        flex-direction: column;
+    }
+
+    * {
+        font-size:36px;
+    }
+
+    input.register {
+        width: 80%;
+    }
+
+    form {
+        margin: auto;
+    }
+}
