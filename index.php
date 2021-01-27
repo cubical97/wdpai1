@@ -8,8 +8,10 @@ if(!isset($_SESSION['ident'])){
 
 require 'Routing.php';
 
-$path = trim($_SERVER['REQUEST_URI'], '/');
-$path = parse_url($path, PHP_URL_PATH);
+if(!isset($path)) {
+    $path = trim($_SERVER['REQUEST_URI'], '/');
+    $path = parse_url($path, PHP_URL_PATH);
+}
 
 Routing::get('', 'DefaultController');
 Routing::get('index', 'DefaultController');
@@ -21,6 +23,8 @@ Routing::post('logout', 'SecurityController');
 
 Routing::post('add_activity', 'ActivityController');
 Routing::get('get_activity', 'ActivityController');
+Routing::get('join', 'ActivityController');
+Routing::get('left', 'ActivityController');
 
 Routing::get('home', 'DefaultController');
 Routing::get('myactivities', 'DefaultController');

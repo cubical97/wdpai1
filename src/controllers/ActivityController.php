@@ -80,10 +80,24 @@ class ActivityController extends DefaultController
                 'user_name' => $user_name, 'activity_types' => $activty_types]);
         }
 
+        if(strlen($date1)==1)
+            $date1 = '0'.$date1;
+        if(strlen($date2)==1)
+            $date2 = '0'.$date2;
+
         $date = $date1.'-'.$date2.'-'.$date3;
 
-        $start_time = $date." ".$time1h.$time1m."00";
-        $end_time = $date." ".$time2h.$time2m."00";
+        if(strlen($time1h)==1)
+            $time1h = '0'.$time1h;
+        if(strlen($time1m)==1)
+            $time1m = '0'.$time1m;
+        if(strlen($time2h)==1)
+            $time2h = '0'.$time2h;
+        if(strlen($time2m)==1)
+            $time2m = '0'.$time2m;
+
+        $start_time = $date." ".$time1h.':'.$time1m.':'."00";
+        $end_time = $date." ".$time2h.':'.$time2m.':'."00";
 
         $description = $_POST["description"];
 
@@ -96,9 +110,12 @@ class ActivityController extends DefaultController
         header("Location: {$url}/myactivities");
     }
 
-    public function get_activity(int $id_a) {
-        $activity = $this->get_activity($id_a);
-
+    public function join($id_a) {
+        $this->activityRepository->join($id_a);
+        http_response_code(200);
+    }
+    public function left($id_a) {
+        $this->activityRepository->left($id_a);
         http_response_code(200);
     }
 }

@@ -102,8 +102,6 @@ class ActivityRepository extends Repository
 
         if (!is_null($name) and (strlen($name) > 0)) {
 
-            $name = '%'.$name.'%';
-
             $stmt = $this->database->connect()->prepare('
             SELECT * FROM v_activities_info WHERE title = :name AND type = :type AND end_time>NOW()');
 
@@ -144,33 +142,12 @@ class ActivityRepository extends Repository
     {
         $result = [];
 
-        $stmt = $this->database->connect()->prepare('
-            SELECT * FROM (v_activities_info LEFT JOIN public.users_activities ua ON (v_activities_info.id_a = ua.id_a))
-            WHERE ua.id_u = :id_u AND v_activities_info.end_time>NOW();
-            ');
-
-        $id_u = $_SESSION['userid'];
-
-        $stmt->bindParam(':id_u', $id_u, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $activities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $activities = $this->getUserActivs();
 
         $max = 3;
         foreach ($activities as $activity) {
             if ($max > 0) {
-                $result[] = new Activity(
-                    ActionType::getTypeName($activity['type']),
-                    $activity['title'],
-                    $activity['start_time'],
-                    $activity['end_time'],
-                    $activity['description'],
-                    $activity['city'],
-                    $activity['street'],
-                    $activity['number'],
-                    ActionType::getTypeIcon($activity['type']),
-                    $activity['id_a']
-                );
+                $result[] = $activity;
             }
             $max--;
         }
@@ -183,7 +160,8 @@ class ActivityRepository extends Repository
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM v_activities_info WHERE (v_activities_info.id_assigned_by = :id_u AND v_activities_info.end_time>NOW());
+            SELECT * FROM (v_activities_info LEFT JOIN public.users_activities ua ON (v_activities_info.id_a = ua.id_a))
+            WHERE ua.id_u = :id_u AND v_activities_info.end_time>NOW();
             ');
 
         $id_u = $_SESSION['userid'];
@@ -207,10 +185,11 @@ class ActivityRepository extends Repository
                 $activity['id_a']
             );
         }
+
         return $result;
     }
 
-    public function getActivityInfo(int $id_a): ?Activity         //TODO get activity_ID
+    public function getActivityInfo(int $id_a): ?Activity
     {
         $result = null;
 
@@ -237,5 +216,35 @@ class ActivityRepository extends Repository
         );
 
         return $result;
+    }
+
+    public function join($id_a) {
+
+        $assignedById = $_SESSION['userid'];
+
+        $stmt = $this->database->connect()->prepare('
+        INSERT INTO users_activities (id_u, id_a)
+        VALUES (?, ?)
+        ');
+
+        $stmt->execute([
+            $assignedById,
+            $id_a
+        ]);
+    }
+    public function left($id_a) {
+
+        $id_u = $_SESSION['userid'];
+
+        $stmt = $this->database->connect()->prepare('
+        DELETE
+        FROM public.users_activities
+        WHERE id_u = :id_u AND id_a = :id_a
+        ');
+
+        $stmt->execute([
+            $id_u,
+            $id_a
+        ]);
     }
 }

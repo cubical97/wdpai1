@@ -46,6 +46,7 @@ class SecurityController extends AppController
     {
 
         $_SESSION['logon'] = 0;
+        $_SESSION['userid'] = -1;
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/");

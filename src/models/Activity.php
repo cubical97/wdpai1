@@ -144,4 +144,9 @@ class Activity
     {
         $this->description = $description;
     }
+
+    public function getAddress(): string
+    {
+        return $this->number.' '.$this->street.' '.$this->city;
+    }
 }

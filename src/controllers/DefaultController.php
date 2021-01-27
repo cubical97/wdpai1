@@ -19,6 +19,7 @@ class DefaultController extends AppController {
     public function index() {
         $this->render('index');
     }
+
     public function register() {
         $this->render('register');
     }
@@ -51,7 +52,6 @@ class DefaultController extends AppController {
     }
 
     public function activity(string $id) {
-
         $id = intval($id);
 
         $user_name = $this->userRepository->getUserName();
@@ -61,13 +61,13 @@ class DefaultController extends AppController {
             'user_activities' => $user_activities]);
     }
 
-    // extra  extra  extra  extra  extra  extra  extra  extra  extra
-
     public function home_find() {
         if(!$this->isPost()) {
             $user_name = $this->userRepository->getUserName();
+            $activities_assigned = $this->activityRepository->getHeaderActivs();
             $activty_types = ActionType::getAllNames();
-            $this->render('home', ['user_name' => $user_name, 'activity_types' => $activty_types]);
+            $this->render('home', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned,
+                'activity_types' => $activty_types]);
         }
 
         $find = $_POST["find"];
