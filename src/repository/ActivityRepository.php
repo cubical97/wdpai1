@@ -18,6 +18,10 @@ class ActivityRepository extends Repository
 
         $activity = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        if ($activity == false) {
+            return null;
+        }
+      
         $result = new Activity(
             ActionType::getTypeName($activity['type']),
             $activity['title'],
