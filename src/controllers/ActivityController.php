@@ -26,6 +26,7 @@ class ActivityController extends AppController
         if(!preg_match('/^[a-zA-Z0-9\s\.\-_]+/D ', $title))
         {
             $messages[] = 'Wrong name!';
+
         }
         if(!preg_match('/^[0-9]{1,2}$/', $time1h) || !preg_match('/^[0-9]{1,2}$/', $time1m)
         || !preg_match('/^[0-9]{1,2}$/', $time2h) || !preg_match('/^[0-9]{1,2}$/', $time2m))
