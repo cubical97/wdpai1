@@ -6,7 +6,7 @@ require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../models/Activity.php';
 require_once __DIR__.'/../repository/ActivityRepository.php';
 
-class ActivityController extends DefaultController
+class ActivityController extends AppController
 {
     private $activityRepository;
 
@@ -16,98 +16,45 @@ class ActivityController extends DefaultController
         $this->activityRepository = new ActivityRepository();
     }
 
-    public function add_activity()
+    public function addActivity($activity) {
+        $this->activityRepository->addActivity($activity);
+    }
+    public function add_activity_validate_info($title, $time1h, $time1m, $time2h, $time2m, $date1, $date2, $date3,
+                                               $address1, $address2, $address3)
     {
-        if(!$this->isPost()) {
-            return $this->render('activity_create');
-        }
-
-        $type = $_POST["type"];
-        $title = $_POST["name"];
-
-        $time1h = $_POST["time1h"];
-        $time1m = $_POST["time1m"];
-        $time2h = $_POST["time2h"];
-        $time2m = $_POST["time2m"];
-
-        $date1 = $_POST["date1"];
-        $date2 = $_POST["date2"];
-        $date3 = $_POST["date3"];
-
-        $address1 = $_POST["location_nr"];
-        $address2 = $_POST["location_street"];
-        $address3 = $_POST["location_city"];
-
-        $type = ActionType::getTypeId($type);
-
-        $user_name = $this->userRepository->getUserName();
-        $activty_types = ActionType::getAllNames();
-
-
+        $messages = [];
         if(!preg_match('/^[a-zA-Z0-9\s\.\-_]+/D ', $title))
         {
-            return $this->render('activity_create', ['messages' => ['Wrong name!'],
-                'user_name' => $user_name, 'activity_types' => $activty_types]);
+            $messages[] = 'Wrong name!';
+
         }
         if(!preg_match('/^[0-9]{1,2}$/', $time1h) || !preg_match('/^[0-9]{1,2}$/', $time1m)
         || !preg_match('/^[0-9]{1,2}$/', $time2h) || !preg_match('/^[0-9]{1,2}$/', $time2m))
         {
-            return $this->render('activity_create', ['messages' => ['Wrong time!'],
-                'user_name' => $user_name, 'activity_types' => $activty_types]);
+            $messages[] = 'Wrong time!';
         }
         else {
-            if( $time2h < $time1h || ( $time2h == $time1h && $time2m <= $time1m ))
-                return $this->render('activity_create', ['messages' => ['end time must be later!'],
-                    'user_name' => $user_name, 'activity_types' => $activty_types]);
+            if( $time2h < $time1h || ( $time2h == $time1h && $time2m <= $time1m )) {
+                $messages[] = 'end time must be later!';
+            }
         }
 
         if(!preg_match('/^[0-9]{1,2}/', $date1) || !preg_match('/^[0-9]{1,2}/', $date2)
-            || !preg_match('/^[0-9]{1,2}/', $date3))
-        {
-            return $this->render('activity_create', ['messages' => ['Wrong date!'],
-                'user_name' => $user_name, 'activity_types' => $activty_types]);
+            || !preg_match('/^[0-9]{1,2}/', $date3)) {
+            $messages[] = 'Wrong date!';
         }
-        else {
-            if($date1<1 || $date2<1 || $date3<2000 || $date1>31 || $date2>12 || $date3>9999 )
-                return $this->render('activity_create', ['messages' => ['Wrong date!'],
-                    'user_name' => $user_name, 'activity_types' => $activty_types]);
-        }
+        else
+            if($date1<1 || $date2<1 || $date3<2000 || $date1>31 || $date2>12 || $date3>9999 ) {
+                $messages[] = 'Wrong date!';
+            }
+
 
         if(!preg_match('/^[0-9]{1,4}/', $address1) || !preg_match('/^[a-zA-Z0-9\s\.\-_]{1,40}/', $address2)
             || !preg_match('/^[a-zA-Z0-9\s\.\-_]{1,40}/', $address3))
         {
-            return $this->render('activity_create', ['messages' => ['wrong address'],
-                'user_name' => $user_name, 'activity_types' => $activty_types]);
+            $messages[] = 'Wrong address!';
         }
-
-        if(strlen($date1)==1)
-            $date1 = '0'.$date1;
-        if(strlen($date2)==1)
-            $date2 = '0'.$date2;
-
-        $date = $date3.'-'.$date2.'-'.$date1;
-
-        if(strlen($time1h)==1)
-            $time1h = '0'.$time1h;
-        if(strlen($time1m)==1)
-            $time1m = '0'.$time1m;
-        if(strlen($time2h)==1)
-            $time2h = '0'.$time2h;
-        if(strlen($time2m)==1)
-            $time2m = '0'.$time2m;
-
-        $start_time = $date." ".$time1h.':'.$time1m.':'."00";
-        $end_time = $date." ".$time2h.':'.$time2m.':'."00";
-
-        $description = $_POST["description"];
-
-        $activity = new Activity($type, $title, $start_time, $end_time, $description, $address3,
-            $address2, $address1);
-
-        $this->activityRepository->addActivity($activity);
-
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/myactivities");
+        return $messages;
     }
 
     public function join($id_a) {
@@ -117,5 +64,25 @@ class ActivityController extends DefaultController
     public function left($id_a) {
         $this->activityRepository->left($id_a);
         http_response_code(200);
+    }
+    
+    public function getUserActivs(): ?array
+    {
+        return $this->activityRepository->getUserActivs();
+    }
+
+    public function findActivities(string $name, string $type): ?array
+    {
+        return $this->activityRepository->findActivities($name, $type);
+    }
+
+    public function getActivity(int $id): ?Activity
+    {
+        return $this->activityRepository->getActivity($id);
+    }
+
+    public function getHeaderActivs(): ?array
+    {
+        return $this->activityRepository->getHeaderActivs();
     }
 }
