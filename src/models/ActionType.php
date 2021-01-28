@@ -5,7 +5,7 @@ class ActionType
 {
     private static $typeName = ['cycling','jogging','gym','swimming'];
     private static $typeIcon = [
-        "fas fa-biking", // class name to <i class="fas fa-iconname"></i>
+        "fas fa-biking", // <i> class name
         "fas fa-running",
         "fas fa-dumbbell",
         "fas fa-swimmer"

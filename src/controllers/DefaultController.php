@@ -72,7 +72,6 @@ class DefaultController extends AppController {
         $user_name = $this->securityController->getUserName();
         $user_activities = $this->activityController->getHeaderActivs();
         $activities_assigned = $this->activityController->getActivity($id);
-        //$activities_assigned = $this->activityRepository->getActivity($id);
         $this->render('activity', ['user_name' => $user_name, 'activities_assigned' => $activities_assigned,
             'user_activities' => $user_activities]);
     }
@@ -218,7 +217,6 @@ class DefaultController extends AppController {
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/myactivities");
     }
-
 }
 
 ?>
