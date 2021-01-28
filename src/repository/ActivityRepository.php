@@ -21,7 +21,7 @@ class ActivityRepository extends Repository
         if ($activity == false) {
             return null;
         }
-      
+
         $result = new Activity(
             ActionType::getTypeName($activity['type']),
             $activity['title'],
