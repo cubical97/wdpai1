@@ -97,6 +97,21 @@ class SecurityController extends AppController
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/home");
     }
+
+    public function getUserName(): string
+    {
+        return $this->userRepository->getUserName();
+    }
+
+    public function changeUserName(string $name)
+    {
+        $this->userRepository->changeUserName($name);
+    }
+
+    public function changeUserPassword(string $password1, string $password2)
+    {
+        $this->userRepository->changeUserPassword($password1, $password2);
+    }
 }
 
 ?>

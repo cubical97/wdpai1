@@ -5,31 +5,33 @@ require_once __DIR__.'/../models/Activity.php';
 
 class ActivityRepository extends Repository
 {
-
-    public function getActivity(string $id): ?Activity
+    public function getActivity(int $id_a): ?Activity
     {
+        $result = null;
+
         $stmt = $this->database->connect()->prepare('
-        SELECT * FROM v_activities_info WHERE id = :id
-        ');
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            SELECT * FROM v_activities_info WHERE (v_activities_info.id_a = :id_a);
+            ');
+
+        $stmt->bindParam(':id_a', $id_a, PDO::PARAM_INT);
         $stmt->execute();
 
         $activity = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($activity == false) {
-            return null;
-        }
-
-        return new Activity(
-            $activity['type'],
+        $result = new Activity(
+            ActionType::getTypeName($activity['type']),
             $activity['title'],
             $activity['start_time'],
             $activity['end_time'],
             $activity['description'],
             $activity['city'],
             $activity['street'],
-            $activity['number']
+            $activity['number'],
+            ActionType::getTypeIcon($activity['type']),
+            $activity['id_a']
         );
+
+        return $result;
     }
 
     public function addActivity(Activity $activity)
@@ -186,35 +188,6 @@ class ActivityRepository extends Repository
                 $activity['id_a']
             );
         }
-
-        return $result;
-    }
-
-    public function getActivityInfo(int $id_a): ?Activity
-    {
-        $result = null;
-
-        $stmt = $this->database->connect()->prepare('
-            SELECT * FROM v_activities_info WHERE (v_activities_info.id_a = :id_a);
-            ');
-
-        $stmt->bindParam(':id_a', $id_a, PDO::PARAM_INT);
-        $stmt->execute();
-
-        $activity = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        $result = new Activity(
-            ActionType::getTypeName($activity['type']),
-            $activity['title'],
-            $activity['start_time'],
-            $activity['end_time'],
-            $activity['description'],
-            $activity['city'],
-            $activity['street'],
-            $activity['number'],
-            ActionType::getTypeIcon($activity['type']),
-            $activity['id_a']
-        );
 
         return $result;
     }
